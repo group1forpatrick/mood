@@ -1,0 +1,23 @@
+{
+  "name": "mood-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "seed": "node ./tasks/seed.js"
+  },
+  "author": "Mijeong Ban",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "fullpage.js": "^3.0.5",
+    "jquery": "^3.4.0",
+    "mongodb": "^3.2.3"
+  }
+}
