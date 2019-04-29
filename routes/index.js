@@ -7,6 +7,9 @@ const constructorMethod = app => {
   app.use("/", (req, res) => {
     res.render("mainBeforeLogin", {});
   });
+  app.use("/in", (req, res) => {
+    res.render("mainAfterLogin", {});
+  });
 
   app.use("*", (req, res) => {
     res.redirect("/");

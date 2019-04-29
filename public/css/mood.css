@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@font-face {
+  font-family: Poppins-Regular;
+  src: url("../fonts/poppins/Poppins-Regular.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 425px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* margin: auto; */
+  color: #555555;
+  margin-left: 55%;
+  margin-top: 10%;
+}
+.logo .animate {
+  -webkit-animation: logo 1s;
+  -moz-animation: logo 1s;
+  animation: logo 1s;
+}
+.logo .icon {
+  display: inline-block;
+}
+.logo .icon span {
+  display: inline-block;
+  vertical-align: middle;
+  font: 400 60px "Poppins-Regular";
+}
+.logo .icon span:first-of-type {
+  margin-right: -15px;
+  margin-top: 0px;
+}
+.logo .pipe {
+  display: inline-block;
+  vertical-align: middle;
+  font: 100 60px "Poppins-Regular";
+  margin-top: -10px;
+}
+.logo .pipe.animate {
+  -webkit-animation: openPipe 1s;
+  -moz-animation: openPipe 1s;
+  animation: openPipe 1s;
+}
+.logo .name {
+  display: inline-block;
+  vertical-align: middle;
+  font: 80 20px "Poppins-Regular";
+}
+.logo .name.animate {
+  -webkit-animation: slideName 2s;
+  -moz-animation: slideName 2s;
+  animation: slideName 2s;
+}
+
+@keyframes logo {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+@keyframes openPipe {
+  0%,
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes slideUp {
+  0%,
+  50% {
+    margin-bottom: -100%;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+@keyframes slideName {
+  0%,
+  40% {
+    transform: scale(0);
+    opacity: 0;
+    margin-left: -100%;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0%;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@media (max-width: 500px) {
+  .logo {
+    width: 113px;
+  }
+  .logo .pipe,
+  .logo .name {
+    display: none;
+  }
+}
