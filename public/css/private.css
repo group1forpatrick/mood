@@ -246,7 +246,7 @@ iframe {
 [ Form ]*/
 
 .login100-form {
-  width: 50%;
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -254,6 +254,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   padding: 303px 65px 40px 65px;
+  justify-content: center;
 }
 
 .login100-form-title {
@@ -343,7 +344,7 @@ input.input100 {
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
-  width: 100%;
+  width: 55%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -351,6 +352,8 @@ input.input100 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .login100-form-btn {

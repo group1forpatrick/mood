@@ -1,0 +1,24 @@
+.weathersection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weather-wrapper {
+  padding: 2rem;
+}
+.card {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+  position: relative;
+  background-color: #fff;
+  height: 600px;
+  width: 800px;
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
