@@ -1,14 +1,9 @@
-const loginRoutes = require("./login");
-const signupRoutes = require("./signup");
+const privateRoutes = require("./private");
 
 const constructorMethod = app => {
-  app.use("/login", loginRoutes);
-  app.use("/signup", signupRoutes);
+  app.use("/private", privateRoutes);
   app.use("/", (req, res) => {
-    res.render("mainBeforeLogin", {});
-  });
-  app.use("/in", (req, res) => {
-    res.render("mainAfterLogin", {});
+    res.render("public", {});
   });
 
   app.use("*", (req, res) => {

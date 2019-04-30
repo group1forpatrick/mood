@@ -1,0 +1,55 @@
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Mood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../public/css/fullpage.css" />
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <script src="../public/js/fullpage.js"></script>
+</head>
+
+<body>
+    <div id="fullpage">
+        <div class="section">
+
+            <a href="/#page2" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules"
+                data-ca3_icon=""></a>
+        </div>
+        <div class="section">
+
+            <a href="/#page3" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules"
+                data-ca3_icon=""></a>
+        </div>
+
+        <div class="section fp-auto-height">
+            <div class="logo-small">
+
+            </div>
+            <div class="footer">
+                <div class="container-contact">
+                    <p>📞(917) 291 8448 | 📪mban1@stevens.edu | 📍Stevens Institute of Technology | Made with ❤️ from
+                        SIT </p>
+                </div>
+                <div class="container-copyright">
+                    <p>© RateIt. All rights reserved. Developed by group1forpatrick</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new fullpage("#fullpage", {
+            anchors: ["page1", "page2", "page3", "page4"],
+            sectionsColor: ["#dfe4ea", "#e17055", "#2d3436", "#2d3436"],
+            autoScrolling: true,
+            scrollHorizontally: true,
+            controlArrows: true,
+            verticalCentered: true,
+            responsiveWidth: 0,
+            responsiveHeight: 0
+        });
+
+        //methods
+        fullpage_api.setAllowScrolling(true);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</body>
