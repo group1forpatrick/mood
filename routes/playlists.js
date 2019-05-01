@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    res.render("private/private", {});
+    res.render("private/playlists", {});
   } catch (e) {
     res.status(500).json({ error: e });
   }
