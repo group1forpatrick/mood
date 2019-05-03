@@ -29,6 +29,7 @@ router.put("/", LoggedIn, async (req, res) => {
 
   try {
     const zipcode = await userData.addZipcode(userId, zipcodeInput);
+    res.render("private/playlists", { zipcode: zipcode });
   } catch (e) {
     res.status(400).json("zipcode update fail");
   }
