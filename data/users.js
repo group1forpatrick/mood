@@ -40,6 +40,12 @@ const addUser = async (
   });
 };
 
+const getAll = async () => {
+  const userCollection = await users();
+  const allUsers = await userCollection.find({}).toArray();
+  return allUsers;
+};
+
 const isExist = async username => {
   const userCollection = await users();
   const user = await userCollection.findOne({ username: username });
@@ -47,7 +53,11 @@ const isExist = async username => {
   return true;
 };
 
+const addZipcode = async id => {};
+
 module.exports = {
   addUser,
-  isExist
+  getAll,
+  isExist,
+  addZipcode
 };

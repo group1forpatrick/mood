@@ -9,4 +9,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  // const zipcode = req.body.zipcode;
+  /*
+  *** Error Checking ***
+  1. no input
+  2. proper type input (ajax)
+  */
+  // try {
+  //   const
+  // }
+});
+
 module.exports = router;
