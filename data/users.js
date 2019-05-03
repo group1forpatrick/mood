@@ -53,13 +53,6 @@ const isExist = async username => {
   return true;
 };
 
-// const addZipcode = async id => {
-//   const userCollection = await users();
-//   const zipCode = await userCollection.findOne({ zip: zip});
-
-
-// };
-
 async function addZipcode(id, newZipCode) {
   const userCollection = await users();
   const updatedInfo = await userCollection.updateOne({ _id: ObjectId(id) }, { $set: { zip: newZipCode} });
@@ -69,8 +62,6 @@ if (updatedInfo.modifiedCount === 0) {
   }
   return await newZipCode;
 };
-
-
 
 module.exports = {
   addUser,
