@@ -9,13 +9,11 @@ router.get("/", async (req, res) => {
     res.render("private/private", { user: req.session.user });
   } else {
     res.render("public", {});
-    console.log("no?");
   }
 });
 
 /* Login Request */
 router.post("/login", async (req, res) => {
-  console.log("here");
   try {
     let username = req.body.username;
     let password = req.body.password;
