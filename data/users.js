@@ -29,7 +29,7 @@ const addUser = async (
     firstname: firstname,
     lastname: lastname,
     password: hashedPassword,
-    zip: "",
+    zipcode: "",
     likedPlaylists: [],
     unlikedPlaylists: []
   };

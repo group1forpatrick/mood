@@ -18,6 +18,7 @@ router.get("/", LoggedIn, async (req, res) => {
 });
 
 router.put("/", LoggedIn, async (req, res) => {
+  console.log(req.session.user);
   // const zipcode = req.body.zipcode;
   /*
   *** Error Checking ***
@@ -28,8 +29,6 @@ router.put("/", LoggedIn, async (req, res) => {
   //   const
   // }
   // user's object
-  console.log("im hereee");
-  console.log(req.session.user);
 });
 
 module.exports = router;

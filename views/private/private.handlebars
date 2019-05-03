@@ -49,7 +49,7 @@
                             <div class="pipe animate">|</div>
                             <div class="name animate">Weather & Music</div>
                         </div>
-                        <form method="PUT" action="/private" class="login100-form validate-form">
+                        <form method="POST" action="/private" class="login100-form validate-form">
                             <span class="login100-form-title p-b-34">
                                 Enter Your Zipcode!
                             </span>
@@ -58,7 +58,7 @@
                                 <input id="zipcode" class="input100" type="text" name="zipcode" placeholder="zipcode">
                                 <span class="focus-input100"></span>
                             </div>
-                            {{!-- <input type="hidden" name="thisUser" value="{{user}}" /> --}}
+                            <input type="hidden" name="method" value="PUT" />
                             <div class="container-login100-form-btn">
                                 <button type="submit" class="login100-form-btn">
                                     Enter
