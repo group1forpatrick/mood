@@ -27,7 +27,6 @@ router.get("/added", async (req, res) => {
       res.render("signup", { error: "This username already exists" });
     } else {
       try {
-        console.log("here");
         const hashedPassword = await bcrypt.hash(password, 10);
 
         await users.addUser(

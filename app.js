@@ -27,6 +27,15 @@ app.use(
   })
 );
 
+const rewriteMethod = (req, res, next) => {
+  if (req.body && req.body.method) {
+    req.method = req.body.method;
+    delete req.body.method;
+  }
+  next();
+};
+app.use(rewriteMethod);
+
 configRoutes(app);
 
 app.listen(3000, () => {
