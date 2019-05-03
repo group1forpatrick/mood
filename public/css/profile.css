@@ -1,0 +1,77 @@
+@import "compass/css3";
+.cover {
+  position: relative;
+  background: #ccc;
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+}
+.cover button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+}
+.cover h1 {
+  position: absolute;
+  left: 250px;
+  bottom: 5%;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 3px #333;
+}
+.cover:hover button {
+  display: block;
+}
+.profile-img {
+  position: relative;
+}
+.profile-img img {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: -100px;
+  z-index: 999;
+  border-radius: 50%;
+}
+.profile-img button {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  left: 10px;
+  bottom: -90px;
+}
+.profile-img:hover button {
+  display: block;
+}
+.profile {
+  padding-top: 120px;
+}
+.content {
+  min-height: 200px;
+}
+.content .profile-links {
+  padding: 0;
+  list-style-type: none;
+}
+.feed .feed-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+.feed .feed-image {
+  height: 100px;
+  width: 100px;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+.feed .item-opts {
+  padding: 0;
+}
+.feed .item-opts li {
+  float: left;
+  margin-right: 25px;
+  /* One-off value */
+}
+.feed .item-opts li:first-of-type {
+  list-style: none;
+}

@@ -13,4 +13,6 @@ const getCollectionFn = collection => {
   };
 };
 
-module.exports = {};
+module.exports = {
+  users: getCollectionFn("users")
+};

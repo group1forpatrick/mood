@@ -8,6 +8,7 @@ const configRoutes = require("./routes");
 const exphbs = require("express-handlebars");
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/public", static);
 
