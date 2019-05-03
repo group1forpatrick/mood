@@ -10,7 +10,6 @@ const addUser = async (
   lastname,
   hashedPassword
 ) => {
-  console.log(username, email, firstname, lastname, hashedPassword);
   if (!username | !email | !firstname | !lastname | !hashedPassword)
     throw "All input fields required";
   if (

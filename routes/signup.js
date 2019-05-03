@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.get("/added", async (req, res) => {
   const username = req.query.username;
   const email = req.query.email;
   const firstname = req.query.firstname;
@@ -19,71 +19,31 @@ router.post("/", async (req, res) => {
   const password = req.query.pass1;
   const confirmPassword = req.query.pass2;
 
-  console.log(username);
-
   // check if password and confirm password match
   if (password !== confirmPassword) {
-    // res.render("signup", { error: "Confirm your password again!" });
-    console.log("password differ");
+    res.render("signup", { error: "Confirm your password again!" });
   } else {
     if (await users.isExist(username)) {
-      // res.render("signup", { error: "This username already exists" });
-      console.log("already exist");
+      res.render("signup", { error: "This username already exists" });
     } else {
       try {
-        // const hashedPassword = await bcrypt.hash(password, 10);
+        console.log("here");
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         await users.addUser(
           username,
           email,
           firstname,
           lastname,
-          // hashedPassword
-          password
+          hashedPassword
         );
       } catch (e) {
-        // res.render("signup", { error: e });
+        res.render("signup", { error: e });
         console.log(e);
       }
-      // res.redirect("/public");
+      res.redirect("/public");
     }
   }
 });
-
-// router.post("/", async (req, res) => {
-//   const username = req.body.username;
-//   const email = req.body.email;
-//   const firstname = req.body.firstname;
-//   const lastname = req.body.lastname;
-//   const password = req.body.pass1;
-//   const confirmPassword = req.body.pass2;
-//   console.log("hi");
-
-//   // check if password and confirm password match
-//   if (password !== confirmPassword) {
-//     // res.render("signup", { error: "Confirm your password again!" });
-//     console.log("password differ");
-//   } else {
-//     if (await users.isExist(username)) {
-//       // res.render("signup", { error: "This username already exists" });
-//       console.log("already exist");
-//     } else {
-//       try {
-//         const hashedPassword = await bcrypt.hash(password, saltRounds);
-//         await users.addUser(
-//           username,
-//           email,
-//           firstname,
-//           lastname,
-//           hashedPassword
-//         );
-//       } catch (e) {
-//         // res.render("signup", { error: e });
-//         console.log(e);
-//       }
-//       res.redirect("/public");
-//     }
-//   }
-// });
 
 module.exports = router;
