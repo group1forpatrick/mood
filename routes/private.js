@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const userData = require("../data/users");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
@@ -18,17 +19,19 @@ router.get("/", LoggedIn, async (req, res) => {
 });
 
 router.put("/", LoggedIn, async (req, res) => {
-  console.log(req.session.user);
-  // const zipcode = req.body.zipcode;
+  const userId = req.session.user._id;
+  const zipcodeInput = req.body.zipcode;
   /*
   *** Error Checking ***
   1. no input
   2. proper type input (ajax)
   */
-  // try {
-  //   const
-  // }
-  // user's object
+
+  try {
+    const zipcode = await userData.addZipcode(userId, zipcodeInput);
+  } catch (e) {
+    res.status(400).json("zipcode update fail");
+  }
 });
 
 module.exports = router;
