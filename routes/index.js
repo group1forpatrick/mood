@@ -11,6 +11,9 @@ const constructorMethod = app => {
   app.use("/profile", profileRoutes);
   app.use("/", publicRoutes);
 
+
+
+  
   app.use("*", (req, res) => {
     res.redirect("/");
   });
