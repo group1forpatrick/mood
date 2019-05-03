@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../public/css/playlist.css">
     <style>
         .login100-form {
-            padding-top: 110px;
+            padding-top: 70px;
         }
     </style>
 </head>
@@ -36,8 +36,9 @@
                     <div class="wrap-login100">
                         <div class="profile">
                             <div class="w-full text-center p-t-27 p-b-239">
+                                <p class="txt3">Hello, {{user.username}}!</p>
                                 <a href="/profile" class="txt3">
-                                    Your Profile
+                                    👉🏻Your Profile👈🏻
                                 </a>
                             </div>
                         </div>
@@ -72,6 +73,7 @@
                                 <a href="/playlists" class="txt2">
                                     temp link to the next page
                                 </a>
+                                <a href="/logout" class="txt3">logout🔚</a>
                             </div>
                         </form>
                     </div>
