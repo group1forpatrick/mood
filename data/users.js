@@ -29,7 +29,7 @@ const addUser = async (
     firstname: firstname,
     lastname: lastname,
     password: hashedPassword,
-    zipcode: "",
+    zip: "",
     likedPlaylists: [],
     unlikedPlaylists: []
   };
@@ -62,7 +62,9 @@ async function addZipcode(id, newZipCode) {
   if (updatedInfo.modifiedCount === 0) {
     throw "could not update successfully";
   }
-  return await newZipCode;
+  return await userCollection.findOne({
+    _id: ObjectId(id)
+  });
 }
 
 module.exports = {

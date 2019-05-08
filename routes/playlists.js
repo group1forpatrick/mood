@@ -14,6 +14,7 @@ function LoggedIn(req, res, next) {
 
 router.get("/", async (req, res) => {
   try {
+    console.log(await weatherData.getWeather(req.session.user.zip));
     res.render("private/playlists", {});
   } catch (e) {
     res.status(500).json({ error: e });
