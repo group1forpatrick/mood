@@ -21,6 +21,7 @@
     "fullpage.js": "^3.0.5",
     "jquery": "^3.4.0",
     "mongodb": "^3.2.3",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "spotify-web-api-node": "^4.0.0"
   }
 }
