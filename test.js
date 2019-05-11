@@ -1,7 +1,8 @@
 const mongoCollections = require("./config/mongoCollections");
 const playlists = mongoCollections.playlists;
-//const { ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb");
 var SpotifyWebApi = require("spotify-web-api-node");
+const weatherData = require("./data/weather");
 
 var clientId = "aba7897fb89b4bf299913de0fda991e0",
   clientSecret = "9d58ecc5a16f4f8299cc6e0bbea197bf";
@@ -13,6 +14,27 @@ var spotifyApi = new SpotifyWebApi({
 });
 
 let playlistIds = [];
+
+async function getPlaylistsByWeather(weather_tag) {
+  if (!weather_tag) throw "error: argument weather_tag does not exist";
+
+  const playlistCollection = await playlists();
+  const pls = await playlistCollection
+    .find({ weatherTag: weather_tag })
+    .toArray();
+  console.log(pls);
+}
+
+async function testWeatherPlaylists() {
+  try {
+    let wthr = await weatherData.getWeather("07307");
+    console.log(wthr.weather_tag);
+    await getPlaylistsByWeather(wthr.weather_tag);
+    return;
+  } catch (e) {
+    console.log(`Error: ${e}`);
+  }
+}
 
 async function createPlaylist(genre, weatherTag, spotifyId) {
   if (!genre) {
@@ -50,32 +72,47 @@ async function createPlaylist(genre, weatherTag, spotifyId) {
   //const newId = insertInfo.insertedId;
 
   //return await playlistCollection.find({}).toArray();
+  return;
 }
 
-// Retrieve an access token.
-spotifyApi.clientCredentialsGrant().then(
-  async function(data) {
-    console.log("The access token expires in " + data.body["expires_in"]);
-    console.log("The access token is " + data.body["access_token"]);
+function seeder() {
+  // Retrieve an access token.
+  spotifyApi.clientCredentialsGrant().then(
+    function(data) {
+      console.log("The access token expires in " + data.body["expires_in"]);
+      console.log("The access token is " + data.body["access_token"]);
 
-    // Save the access token so that it's used in future calls
-    spotifyApi.setAccessToken(data.body["access_token"]);
-    spotifyApi.getUserPlaylists("123643422").then(
-      async function(data) {
-        const playlistCollection = await playlists();
-        console.log("Retrieved playlists", data.body);
-        data.body.items.forEach(element => {
-          createPlaylist("Multiple", "Sunny", element.id);
-        });
-        console.log(`Playlist Id: ${data.body.items[0].id}`);
-        console.log(await playlistCollection.find({}).toArray());
-      },
-      function(err) {
-        console.log("Something went wrong!", err);
-      }
-    );
-  },
-  function(err) {
-    console.log("Something went wrong when retrieving an access token", err);
-  }
-);
+      // Save the access token so that it's used in future calls
+      spotifyApi.setAccessToken(data.body["access_token"]);
+      spotifyApi.getUserPlaylists("123643422").then(
+        async function(data) {
+          //console.log("Retrieved playlists", data.body);
+          data.body.items.forEach(element => {
+            spotifyApi.getPlaylist(element.id).then(function(pl) {
+              createPlaylist(pl.body.description, element.name, element.id);
+            });
+          });
+          const playlistCollection = await playlists();
+          // console.log(`Playlist Id: ${data.body.items[0].id}`);
+          // console.log(await playlistCollection.find({}).toArray());
+          return;
+        },
+        function(err) {
+          console.log("Something went wrong!", err);
+        }
+      );
+      //console.log("test");
+      return;
+    },
+    function(err) {
+      console.log("Something went wrong when retrieving an access token", err);
+    }
+  );
+  return;
+}
+
+seeder();
+testWeatherPlaylists();
+
+//FIXME: not stopping after node test.js
+//FIXME: for some reason not logging the playlistCollection
