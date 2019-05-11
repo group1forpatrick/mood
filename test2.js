@@ -48,48 +48,48 @@ async function createPlaylist(genre, weatherTag, spotifyId) {
 
 async function seeder() {
   try {
-    console.log("test0");
+    //console.log("test0");
     const data = await spotifyApi.clientCredentialsGrant();
-    console.log("The access token expires in " + data.body["expires_in"]);
-    console.log("The access token is " + data.body["access_token"]);
+    //console.log("The access token expires in " + data.body["expires_in"]);
+    //console.log("The access token is " + data.body["access_token"]);
     spotifyApi.setAccessToken(data.body["access_token"]);
-    console.log("test1");
+    //console.log("test1");
     const lists = await spotifyApi.getUserPlaylists("123643422");
-    console.log("test2");
-    console.log(lists.body.items[0].id);
+    //console.log("test2");
+    //console.log(lists.body.items[0].id);
     for (const element in lists.body.items) {
-      console.log("test3");
+      //console.log("test3");
       //console.log(lists.body.items[element].id);
       const list = await spotifyApi.getPlaylist(lists.body.items[element].id);
-      console.log(list);
-      console.log("test4");
+      //console.log(lists.body.items[element].id);
+      //console.log("test4");
       await createPlaylist(list.body.description, list.body.name, list.body.id);
-      console.log("test5");
+      //console.log("test5");
     }
-    console.log("test6");
+    //console.log("test6");
   } catch (e) {
-    console.log(`Error: ${e}`);
+    //console.log(`Error: ${e}`);
   }
 }
 
 async function getPlaylistsByWeather(weather_tag) {
   if (!weather_tag) throw "error: argument weather_tag does not exist";
-  console.log("test7");
+  //console.log("test7");
   const playlistCollection = await playlists();
-  console.log("test8");
+  //console.log("test8");
   const pls = await playlistCollection
     .find({ weatherTag: weather_tag })
     .toArray();
-  console.log("test9");
-  console.log(pls);
-  return;
+  //console.log("test9");
+  return pls;
 }
 
 async function testWeatherPlaylists() {
   try {
     let wthr = await weatherData.getWeather("07307");
     console.log(wthr.weather_tag);
-    await getPlaylistsByWeather(wthr.weather_tag);
+    let cloudplaylist = await getPlaylistsByWeather(wthr.weather_tag);
+    console.log(cloudplaylist);
     return;
   } catch (e) {
     console.log(`Error: ${e}`);
@@ -100,7 +100,8 @@ seeder().then(
   function() {
     testWeatherPlaylists().then(
       function() {
-        console.log("yes");
+        //console.log("yes");
+        process.exit();
       },
       function(err) {
         console.log(`Error: ${err}`);
