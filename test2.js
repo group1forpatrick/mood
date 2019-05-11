@@ -56,13 +56,16 @@ async function seeder() {
     console.log("test1");
     const lists = await spotifyApi.getUserPlaylists("123643422");
     console.log("test2");
-    lists.body.items.forEach(async element => {
+    console.log(lists.body.items[0].id);
+    for (const element in lists.body.items) {
       console.log("test3");
-      const list = await spotifyApi.getPlaylist(element.id);
+      //console.log(lists.body.items[element].id);
+      const list = await spotifyApi.getPlaylist(lists.body.items[element].id);
+      console.log(list);
       console.log("test4");
-      await createPlaylist(list.body.description, element.name, element.id);
+      await createPlaylist(list.body.description, list.body.name, list.body.id);
       console.log("test5");
-    });
+    }
     console.log("test6");
   } catch (e) {
     console.log(`Error: ${e}`);
