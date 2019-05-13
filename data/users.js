@@ -67,9 +67,51 @@ async function addZipcode(id, newZipCode) {
   });
 }
 
+async function likePlaylist(user_id, playlistId) {
+  if (!user_id) throw "Parameter user_id is undefined.";
+  if (typeof user_id !== "string" && !(user_id instanceof ObjectId))
+    throw "Parameter user_id is not a string or ObjectId";
+  if (!playlistId) throw "Parameter playlistId is undefined.";
+  if (typeof playlistId !== "string" && !(playlistId instanceof ObjectId))
+    throw "Parameter playlistId is not a string or ObjectId";
+
+  const userCollection = await users();
+
+  const updateInfo = await userCollection.updateOne(
+    { _id: ObjectId(user_id) },
+    { $pull: { unlikedPlaylists: playlistId } },
+    { $addToSet: { likedPlaylists: playlistId } }
+  );
+
+  if (updateInfo.modifiedCount === 0)
+    throw "could not like playlist successfully";
+}
+
+async function unlikePlaylist(user_id, playlistId) {
+  if (!user_id) throw "Parameter user_id is undefined.";
+  if (typeof user_id !== "string" && !(user_id instanceof ObjectId))
+    throw "Parameter user_id is not a string or ObjectId";
+  if (!playlistId) throw "Parameter playlistId is undefined.";
+  if (typeof playlistId !== "string" && !(playlistId instanceof ObjectId))
+    throw "Parameter playlistId is not a string or ObjectId";
+
+  const userCollection = await users();
+
+  const updateInfo = await userCollection.updateOne(
+    { _id: ObjectId(user_id) },
+    { $pull: { likedPlaylists: playlistId } },
+    { $addToSet: { unlikedPlaylists: playlistId } }
+  );
+
+  if (updateInfo.modifiedCount === 0)
+    throw "could not unlike playlist successfully";
+}
+
 module.exports = {
   addUser,
   getAll,
   isExist,
-  addZipcode
+  addZipcode,
+  likePlaylist,
+  unlikePlaylist
 };
