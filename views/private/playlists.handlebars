@@ -57,6 +57,8 @@
                             <div class="album-info">
                                 <p id="playlist-name">🎧 {{this.name}}</p>
                                 <p id="weather-tag"># {{this.weatherTag}}</p>
+                                <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
+                                <p id="click-to-detail">Click here if you like this playlist!</p>
                             </div>
                         </div>
                         <div id="right-side">
@@ -65,7 +67,7 @@
                                     {{#each this.tracks}}
                                     <li>
                                         <span class="playing fa fa-play"></span>
-                                        <span class="track-number"></span>
+                                        <span class="track-number">{{@index}}</span>
                                         <span class="track-name">{{this.name}}</span>
                                         <span
                                             class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>

@@ -70,7 +70,7 @@ async function getPlaylists(playlist_id) {
       album: songs.track.album.name,
       duration: {
         minutes: Math.floor(songs.track.duration_ms / 60000),
-        seconds: ((songs.track.duration_ms % 60000) / 1000).toFixed(2)
+        seconds: Math.floor((songs.track.duration_ms % 60000) / 1000)
       },
       spotifyId: songs.track.id
     });
