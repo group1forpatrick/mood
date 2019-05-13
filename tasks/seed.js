@@ -12,7 +12,7 @@ var spotifyApi = new SpotifyWebApi({
 async function seeder() {
   try {
     const db = await dbConnection();
-    await db.dropDatabase();
+    await db.collection("playlists").drop();
     const data = await spotifyApi.clientCredentialsGrant();
     spotifyApi.setAccessToken(data.body["access_token"]);
     const lists = await spotifyApi.getUserPlaylists("123643422");

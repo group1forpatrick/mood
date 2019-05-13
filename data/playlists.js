@@ -1,6 +1,7 @@
 const playlists = require("../config/mongoCollections").playlists;
 var SpotifyWebApi = require("spotify-web-api-node");
 const spotifyConfig = require("../tasks/spotify").spotifyConfig;
+const MAX_SONGS = 15;
 
 async function createPlaylist(name, weatherTag, spotifyId) {
   if (!name) {
@@ -60,20 +61,25 @@ async function getPlaylists(playlist_id) {
   let list = {
     name: playlist.body.name,
     weatherTag: playlist.body.description,
+    playlistCover: playlist.body.images[0].url, //640x640 image
     tracks: []
   };
 
+  let counter = 0;
   for (let songs of playlist.body.tracks.items) {
+    if (counter === 15) break;
     list.tracks.push({
       name: songs.track.name,
       artist: songs.track.artists[0].name,
       album: songs.track.album.name,
+      songCover: songs.track.album.images[0].url, //640x640 image
       duration: {
         minutes: Math.floor(songs.track.duration_ms / 60000),
         seconds: Math.floor((songs.track.duration_ms % 60000) / 1000)
       },
       spotifyId: songs.track.id
     });
+    counter++;
   }
 
   return list;
