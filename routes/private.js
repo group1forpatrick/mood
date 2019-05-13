@@ -28,7 +28,8 @@ router.put("/", LoggedIn, async (req, res) => {
   */
 
   try {
-    req.session.user = await userData.addZipcode(userId, zipcodeInput);
+    if (req.session.user.zip !== zipcodeInput)
+      req.session.user = await userData.addZipcode(userId, zipcodeInput);
     res.redirect("/playlists");
   } catch (e) {
     res.status(400).json("zipcode update fail");

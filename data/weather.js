@@ -12,7 +12,6 @@ async function getWeather(zip) {
     );
   });
 
-  //console.log(data);
   return {
     weather_tag: data.weather[0].main,
     weather_des: data.weather[0].description,
@@ -24,11 +23,3 @@ async function getWeather(zip) {
 }
 
 module.exports = { getWeather };
-
-// async function main() {
-//     await getWeather("07300");
-// }
-//
-// main().catch(error => {
-//     console.log(error);
-// });
