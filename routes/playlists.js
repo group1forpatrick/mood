@@ -19,12 +19,15 @@ router.get("/", async (req, res) => {
       weData.weather_tag
     );
 
-    console.log(weatherPlaylists);
-
     let lists = [];
     for (let element of weatherPlaylists)
       lists.push(await playlistsData.getPlaylists(element.spotifyId));
-    res.render("private/playlists", { weather: weData });
+
+    // console.log(lists.tracks[0]);
+    res.render("private/playlists", {
+      weather: weData,
+      playlist: lists
+    });
   } catch (e) {
     res.status(500).json({ error: e });
   }
