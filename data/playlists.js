@@ -67,7 +67,7 @@ async function getPlaylists(playlist_id) {
 
   let counter = 0;
   for (let songs of playlist.body.tracks.items) {
-    if (counter === 15) break;
+    if (counter === MAX_SONGS) break;
     list.tracks.push({
       name: songs.track.name,
       artist: songs.track.artists[0].name,
