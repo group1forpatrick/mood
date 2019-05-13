@@ -29,20 +29,23 @@
             <div class="card">
                 <div class="weather-wrapper">
                     <span class="login100-form-title p-b-34">
-                        Your Current Location
+                        📍{{weather.city}}📍
                     </span>
-                    <div class="w-full text-center">
-                        <a href="#" class="txt3">
-                            {User's address}}
-                        </a>
-                    </div>
-                    <div>weather icon</div>
+                    <div class="weather_tag">{{weather.weather_tag}}</div>
+                    <div class="weather_des">{{weather.weather_des}}</div>
+                    <ol class="temps">
+                        <li>🌡Max: {{weather.max_temp}}/</li>
+                        <li>Current: {{weather.curr_temp}}/</li>
+                        <li>Min: {{weather.min_temp}}</li>
+                    </ol>
+
                 </div>
             </div>
             <div class="arrow bounce"><i class="fa fa-angle-down fa-5x" aria-hidden="true"></i></div>
         </div>
         <div class="section">
             {{!-- wrap up slides with handlebars --}}
+            {{#each playlist}}
             <div class="slide">
                 <div class="music-player">
                     <div class="background"></div>
@@ -52,94 +55,39 @@
                                 <img src=""></img>
                             </span>
                             <div class="album-info">
-                                <p id="artist-name">Playlist name</p>
-                                <p id="album-name">description</p>
+                                <p id="playlist-name">🎧 {{this.name}}</p>
+                                <p id="weather-tag"># {{this.weatherTag}}</p>
+                                <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
+                                <p id="click-to-detail">Click here if you like this playlist!</p>
                             </div>
                         </div>
                         <div id="right-side">
                             <div class="tracklist">
                                 <ol>
+                                    {{#each this.tracks}}
                                     <li>
                                         <span class="playing fa fa-play"></span>
-                                        <span class="track-number">1</span>
-                                        <span class="track-name">Amerika</span>
-                                        <span class="track-duration">4:00</span>
+                                        <span class="track-number">{{@index}}</span>
+                                        <span class="track-name">{{this.name}}</span>
+                                        <span
+                                            class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>
                                     </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">2</span>
-                                        <span class="track-name">Something to Believe In</span>
-                                        <span class="track-duration">3:48</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">3</span>
-                                        <span class="track-name">Elsewhere</span>
-                                        <span class="track-duration">3:44</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">4</span>
-                                        <span class="track-name">Mr. Know-It-All</span>
-                                        <span class="track-duration">3:11</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">5</span>
-                                        <span class="track-name">Jungle Youth</span>
-                                        <span class="track-duration">3:40</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">6</span>
-                                        <span class="track-name">Titus Was Born</span>
-                                        <span class="track-duration">4:02</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">7</span>
-                                        <span class="track-name">Repeat</span>
-                                        <span class="track-duration">3:05</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">8</span>
-                                        <span class="track-name">Silvertongue</span>
-                                        <span class="track-duration">3:17</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">9</span>
-                                        <span class="track-name">Art Exhibit</span>
-                                        <span class="track-duration">4:03</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">10</span>
-                                        <span class="track-name">Nothing's Over</span>
-                                        <span class="track-duration">4:24</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">11</span>
-                                        <span class="track-name">Home of the Strange</span>
-                                        <span class="track-duration">2:36</span>
-                                    </li>
+                                    {{/each}}
                                 </ol>
                             </div>
                         </div>
                     </div>
                     <div class="player-controls">
-                        <div class="buttons">
+                        {{!-- <div class="buttons">
                             <button><i class="fa fa-backward"></i></button>
                             <button><i class="fa fa-play"></i></button>
                             <button><i class="fa fa-forward"></i></button>
                             </buttons>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
-                <div class="slide">Next Section</div>
             </div>
+            {{/each}}
 
             <div class="section fp-auto-height">
                 <div class="logo-small">
