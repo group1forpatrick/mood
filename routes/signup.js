@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const users = require("../data/users");
 const bcrypt = require("bcrypt");
+const xss = require("xss");
 
 router.get("/", async (req, res) => {
   try {
@@ -12,12 +13,12 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/added", async (req, res) => {
-  const username = req.query.username;
-  const email = req.query.email;
-  const firstname = req.query.firstname;
-  const lastname = req.query.lastname;
-  const password = req.query.pass1;
-  const confirmPassword = req.query.pass2;
+  const username = xss(req.query.username);
+  const email = xss(req.query.email);
+  const firstname = xss(req.query.firstname);
+  const lastname = xss(req.query.lastname);
+  const password = xss(req.query.pass1);
+  const confirmPassword = xss(req.query.pass2);
 
   // check if password and confirm password match
   if (password !== confirmPassword) {

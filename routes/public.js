@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userData = require("../data/users");
 const bcrypt = require("bcrypt");
+const xss = require("xss");
 
 /* Rendering Main Page with Login Form */
 router.get("/", async (req, res) => {
@@ -15,8 +16,8 @@ router.get("/", async (req, res) => {
 /* Login Request */
 router.post("/login", async (req, res) => {
   try {
-    let username = req.body.username;
-    let password = req.body.password;
+    let username = xss(req.body.username);
+    let password = xss(req.body.password);
 
     const users = await userData.getAll();
 

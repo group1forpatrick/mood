@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userData = require("../data/users");
+const xss = require("xss");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
@@ -20,7 +21,7 @@ router.get("/", LoggedIn, async (req, res) => {
 
 router.put("/", LoggedIn, async (req, res) => {
   const userId = req.session.user._id;
-  const zipcodeInput = req.body.zipcode;
+  const zipcodeInput = xss(req.body.zipcode);
   /*
   *** Error Checking ***
   1. no input
