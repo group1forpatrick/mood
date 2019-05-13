@@ -2,6 +2,23 @@
   font-family: Poppins-Regular;
   src: url("../fonts/poppins/Poppins-Regular.ttf");
 }
+
+.weather-wrapper {
+  text-align: center;
+}
+.weather_tag {
+  font-size: 200%;
+  color: #2d3436;
+}
+.weather_des {
+  color: gray;
+}
+.temps {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .music-player {
   font-family: "Poppins-Regular";
   font-weight: 300;

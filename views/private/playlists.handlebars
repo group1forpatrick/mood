@@ -29,14 +29,15 @@
             <div class="card">
                 <div class="weather-wrapper">
                     <span class="login100-form-title p-b-34">
-                        Your Current Location
+                        📍{{weather.city}}📍
                     </span>
-                    <div class="w-full text-center">
-                        <a href="#" class="txt3">
-                            {User's address}}
-                        </a>
-                    </div>
-                    <div>weather icon</div>
+                    <div class="weather_tag">{{weather.weather_tag}}</div>
+                    <div class="weather_des">{{weather.weather_des}}</div>
+                    <ol class="temps">
+                        <li>🌡Max: {{weather.max_temp}}/</li>
+                        <li>Current: {{weather.curr_temp}}/</li>
+                        <li>Min: {{weather.min_temp}}</li>
+                    </ol>
                 </div>
             </div>
             <div class="arrow bounce"><i class="fa fa-angle-down fa-5x" aria-hidden="true"></i></div>
