@@ -47,6 +47,15 @@ async function getPlaylistsByWeather(weather_tag) {
   return pls;
 }
 
+async function getPlaylistBySpotifyId(spotify_id) {
+  if (!spotify_id) throw "error: argument spotify_id does not exist";
+  const playlistCollection = await playlists();
+  const playlistMongoId = await playlistCollection.find({
+    spotifyId: spotify_id
+  });
+  return playlistMongoId;
+}
+
 async function getPlaylists(playlist_id) {
   var spotifyApi = new SpotifyWebApi({
     clientId: spotifyConfig.clientId,
@@ -57,8 +66,10 @@ async function getPlaylists(playlist_id) {
   spotifyApi.setAccessToken(data.body["access_token"]);
 
   let playlist = await spotifyApi.getPlaylist(playlist_id);
+  let playlistMongoId = await this.getPlaylistBySpotifyId(playlist_id);
 
   let list = {
+    mongoId: playlistMongoId,
     name: playlist.body.name,
     weatherTag: playlist.body.description,
     playlistCover: playlist.body.images[0].url, //640x640 image
@@ -88,5 +99,6 @@ async function getPlaylists(playlist_id) {
 module.exports = {
   createPlaylist,
   getPlaylistsByWeather,
+  getPlaylistBySpotifyId,
   getPlaylists
 };
