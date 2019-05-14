@@ -29,6 +29,12 @@
         .footer {
             padding-top: 3rem;
         }
+
+        #error {
+            margin-left: 0rem;
+            margin-top: 0;
+
+        }
     </style>
 </head>
 
@@ -55,6 +61,9 @@
                             <div class="name animate">Weather & Music</div>
                         </div>
                         <form method="POST" action="/private" class="login100-form validate-form">
+                            {{#if error}}
+                            <p id="error" class="alert alert-danger">Error: {{error}}</p>
+                            {{/if}}
                             <span class="login100-form-title p-b-34">
                                 Enter Your Zipcode!
                             </span>

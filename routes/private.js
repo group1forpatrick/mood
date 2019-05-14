@@ -5,8 +5,9 @@ const xss = require("xss");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
-    req.session.error = { status: 403, message: "Must be logged in." };
-    res.status(403).redirect("/");
+    res.render("private/private", { error: "Must be logged in." });
+    // req.session.error = { status: 403, message: "Must be logged in." };
+    // res.status(403).redirect("/");
   } else {
     next();
   }
@@ -16,8 +17,7 @@ router.get("/", LoggedIn, async (req, res) => {
   try {
     res.render("private/private", { user: req.session.user });
   } catch (e) {
-    req.session.error = { status: 500, message: e };
-    res.status(500).redirect("/");
+    res.render("/", { error: e });
   }
 });
 
@@ -30,13 +30,18 @@ router.put("/", LoggedIn, async (req, res) => {
   2. proper type input (ajax)
   */
 
-  try {
-    if (req.session.user.zip !== zipcodeInput)
-      req.session.user = await userData.addZipcode(userId, zipcodeInput);
-    res.redirect("/playlists");
-  } catch (e) {
-    req.session.error = { status: 400, message: "zipcode update fail" };
-    res.status(400).redirect("/private");
+  if (!zipcodeInput) {
+    res.render("private/private", { error: "You need to give us a zipcode!" });
+  } else {
+    try {
+      if (req.session.user.zip !== zipcodeInput)
+        req.session.user = await userData.addZipcode(userId, zipcodeInput);
+      res.redirect("/playlists");
+    } catch (e) {
+      res.render("private/private", {
+        error: "zipcode update fail"
+      });
+    }
   }
 });
 
