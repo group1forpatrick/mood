@@ -50,9 +50,11 @@ async function getPlaylistsByWeather(weather_tag) {
 async function getPlaylistBySpotifyId(spotify_id) {
   if (!spotify_id) throw "error: argument spotify_id does not exist";
   const playlistCollection = await playlists();
-  const playlistMongoId = await playlistCollection.find({
+  const playlistObject = await playlistCollection.find({
     spotifyId: spotify_id
   });
+  playlistMongoId = playlistObject._id;
+  //console.log(playlistMongoId);
   return playlistMongoId;
 }
 
