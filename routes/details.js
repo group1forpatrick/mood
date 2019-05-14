@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
   console.log(playlist);
 
   try {
-    res.render("private/details", {});
+    res.render("private/details", { playlist: playlist });
   } catch (e) {
     res.status(500).json({ error: e });
   }

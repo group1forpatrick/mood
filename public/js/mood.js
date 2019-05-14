@@ -6,9 +6,6 @@ $(function() {
     height: window.innerHeight
   });
 
-  //append it to the body
-  $("body").append(t.canvas());
-
   //button watcher for replay
   $(".replay").click(function(e) {
     e.preventDefault;
@@ -37,8 +34,5 @@ $(window).resize(function() {
       width: window.innerWidth,
       height: window.innerHeight
     });
-
-    //replacing the old canvas with the new one
-    $("canvas").replaceWith(t.canvas());
   }, 100);
 });
