@@ -15,3 +15,8 @@
   margin: 2rem 20rem 2rem 20rem;
   text-align: left;
 }
+
+.qrcode-like-section {
+  display: flex;
+  justify-content: space-around;
+}

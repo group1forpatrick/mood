@@ -55,10 +55,6 @@
                         <span class="coverart">
                             <img src="{{playlist.playlistCover}}"></img>
                         </span>
-                        <div>
-                            <a href={{playlist.playlist_url}}>Share Spotify URL</a>
-                            <img src={{playlist.qrcode}}>
-                        </div>
                     </div>
                     <div id="right-side">
                         <div class="tracklist">
@@ -82,53 +78,58 @@
                     </div>
                 </div>
             </div>
-            <div class="commentbox login100-form-title">
-                <span class="commentbox-title">
-                    Comment
-                </span>
-                <form method="POST" action="/details" class="commentbox-input">
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 comment-input-box"
-                        data-validate="Type comment">
-                        <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
-                        <input id="comment" class="input100" type="text" name="comment"
-                            placeholder="Leave your comment!">
-                        <span class="focus-input100"></span>
+            <section class="comment-section">
+                <div class="commentbox login100-form-title">
+                    <span class="commentbox-title">
+                        Comment
+                    </span>
+                    <form method="POST" action="/details" class="commentbox-input">
+                        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 comment-input-box"
+                            data-validate="Type comment">
+                            <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                            <input id="comment" class="input100" type="text" name="comment"
+                                placeholder="Leave your comment!">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark mjbutton">Submit</button>
+                    </form>
+                    <div class="txt2 comment-list">
+                        <ul class="list-group">
+                            {{#each comments}}
+                            <li class="list-group-item">{{this.user_id}}🗣 {{this.comment}}</li>
+                            {{/each}}
+                        </ul>
                     </div>
-                    <button type="submit" class="btn btn-outline-dark mjbutton">Submit</button>
-                </form>
-                <div class="txt2 comment-list">
-                    <ul class="list-group">
-                        {{#each comments}}
-                        <li class="list-group-item">{{this.user_id}}🗣 {{this.comment}}</li>
-                        {{/each}}
-                    </ul>
                 </div>
-            </div>
+            </section>
+            <section class="qrcode-like-section">
+                <div>
+                    <a href={{playlist.playlist_url}}>Share Spotify URL</a>
+                    <img src={{playlist.qrcode}}>
+                </div>
+                <div>
+                    like?dislike?
+                </div>
+            </section>
         </div>
     </div>
-    {{!-- <div class="section fp-auto-height">
-        <div class="logo-small">
-            <div class="icon animate">
-                <span>MOOD</span>
-            </div>
-            <div class="pipe animate">|</div>
-            <div class="name animate"><a href="/">Weather & Music</a></div>
-        </div>
+    <div class="section fp-auto-height">
         <div class="footer">
             <div>
-                <p>📞(917) 291 8448 | 📪mban1@stevens.edu | 📍Stevens Institute of Technology | Made with ❤️ from
+                <p>📞(917) 291 8448 | 📪moodforpatrick@stevens.edu | 📍Stevens Institute of Technology | Made with ❤️
+                    from
                     SIT </p>
             </div>
             <div>
                 <p>© Mood. All rights reserved. Developed by group1forpatrick</p>
             </div>
         </div>
-    </div> --}}
+    </div>
     <script src="../public/js/fullpage.js"></script>
     <script>
         new fullpage("#fullpage", {
-            anchors: ["page1"],
-            sectionsColor: ["#ffffff"],
+            anchors: ["page1", "page2"],
+            sectionsColor: ["#ffffff", "black"],
             autoScrolling: false,
             scrollHorizontally: true,
             controlArrows: true,
