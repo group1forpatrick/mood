@@ -1,7 +1,7 @@
 {
   "name": "mood",
   "version": "1.0.0",
-  "description": "",
+  "description": "Weather Based Spotify Playlist Curation",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,16 @@
     "seed": "node ./tasks/seed.js"
   },
   "author": "Mijeong Ban",
+  "contributors": [
+    "Alexander Lu",
+    "Mario P Alexandre",
+    "Sri Gayathri"
+  ],
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/group1forpatrick/mood.git"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
