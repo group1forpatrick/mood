@@ -7,7 +7,7 @@ router.use(function(req, res, next) {
 });
 
 router.get("/", async (req, res) => {
-  res.redirect("/public");
+  res.redirect("/");
 });
 
 module.exports = router;
