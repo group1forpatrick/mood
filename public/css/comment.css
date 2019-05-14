@@ -18,6 +18,9 @@
 
 .qrcode-like-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
+}
+.list-group {
+  margin-top: 5rem;
 }

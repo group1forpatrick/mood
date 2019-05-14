@@ -31,7 +31,10 @@ router.put("/", LoggedIn, async (req, res) => {
   */
 
   if (!zipcodeInput) {
-    res.render("private/private", { error: "You need to give us a zipcode!" });
+    res.render("private/private", {
+      error: "You need to give us a zipcode!",
+      user: req.session.user
+    });
   } else {
     try {
       if (req.session.user.zip !== zipcodeInput)

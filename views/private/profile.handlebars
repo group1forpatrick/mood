@@ -24,26 +24,55 @@
     <style>
         .logo {
             margin-top: 2rem;
+            padding-left: 2rem;
         }
 
         .footer {
             padding-top: 3rem;
         }
+
+        .info-wrapper {}
     </style>
 </head>
 
 <body>
     <div id="fullpage">
         <div class="section">
+            {{!-- <div class="profile">
+                <div class="w-full text-center p-t-27 p-b-239">
+                    <p class="txt3">Hello, {{user.username}}!</p>
+                    <a href="/profile" class="txt3">
+                        👉🏻Your Profile👈🏻
+                    </a>
+                </div>
+            </div> --}}
+            <div class="logo">
+                <div class="icon animate">
+                    <span>Your Profile</span>
+                </div>
+            </div>
             <div class="card">
-                <div style="text-align:center;border:3px grey">
-                    <h1> {{user.firstname}}'s Profile </h1>
-                    <h2>
-                        <p>Hey there! {{user.firstname}}</p>
-                    </h2>
-                    <p> Username: {{user.username}}</p>
-                    <p> Email: {{user.email}} </p>
-                    <p> Zipcode: {{user.zip}}</p>
+                <div class="weather-wrapper">
+                    <span class="login100-form-title p-b-34">
+                        Hey there! {{user.firstname}}
+                    </span>
+                    <span class="info-wrapper">
+                        <p class="txt3"> Username: {{user.username}}</p>
+                        <p class="txt3"> Email: {{user.email}} </p>
+                        <p class="txt3"> Zipcode: {{user.zip}}</p>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="login100-form-title p-b-34">
+                        {{user.firstname}}'s Favorit Playlists
+                    </span>
+                    <div class="txt2 comment-list">
+                        <ul class="list-group">
+                            {{!-- {{#each comments}} --}}
+                            <li class="list-group-item">🗣 </li>
+                            {{!-- {{/each}} --}}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,7 +99,7 @@
         <script>
             new fullpage("#fullpage", {
                 anchors: ["page1", "page2"],
-                sectionsColor: ["#ffffff", "#2d3436"],
+                sectionsColor: ["#dcdde1", "#2d3436"],
                 autoScrolling: true,
                 scrollHorizontally: true,
                 controlArrows: true,

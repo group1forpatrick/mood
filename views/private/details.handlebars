@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="../public/css/weathercard.css">
     <link rel="stylesheet" href="../public/css/playlist.css">
     <link rel="stylesheet" href="../public/css/comment.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <style>
         .coverart img {
             padding-top: 8rem;
@@ -46,7 +48,7 @@
         <div class="section fp-auto-height">
             <span class="login100-form-title p-b-34" id="playlist-header">
                 🎧{{playlist.name}}🎧 with <span class="weather-tag-text">#{{playlist.weatherTag}}</span>
-                <div class="txt2">Click song's titles to see the detail!</div>
+                <div class="txt2">⚠️Click song's titles to see the detail!⚠️</div>
             </span>
             {{!-- wrap up slides with handlebars --}}
             <div class="music-player">
@@ -112,12 +114,12 @@
                         <li>
                             <form method="POST" action="/details/like">
                                 <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
-                                <button type="submit">like</button></form>
+                                <button type="submit">Like <i class="fas fa-heart"></i></button></form>
                         </li>
                         <li>
                             <form method="POST" action="/details/unlike">
                                 <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
-                                <button type="submit">dislike</button></form>
+                                <button type="submit">dislike <i class="far fa-heart"></i></button></form>
                         </li>
                     </ul>
                 </div>
