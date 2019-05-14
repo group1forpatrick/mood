@@ -16,6 +16,7 @@ function LoggedIn(req, res, next) {
 router.get("/", LoggedIn, async (req, res) => {
   const chosenPlaylist = xss(req.query.chosenPlaylist);
   const playlist = await playlistData.getPlaylists(chosenPlaylist);
+  const comments = await commentData.getCommentsByPlaylist(chosenPlaylist);
 
   try {
     res.render("private/details", { playlist: playlist });
