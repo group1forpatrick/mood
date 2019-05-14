@@ -1,5 +1,6 @@
 const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
+const playlists = mongoCollections.playlists;
 const { ObjectId } = require("mongodb");
 
 // Adding signed up user to database
@@ -115,11 +116,38 @@ async function unlikePlaylist(user_id, playlistId) {
   );
 }
 
+async function getUser(user_id) {
+  if (!user_id) throw "Parameter user_id is undefined.";
+  if (typeof user_id !== "string" && !(user_id instanceof ObjectId))
+    throw "Parameter user_id is not a string or ObjectId";
+
+  const userCollection = await users();
+  const user = await userCollection.findOne({ _id: ObjectId(user_id) });
+
+  if (!user) throw "User not found";
+
+  delete user.hashedPassword;
+
+  const playlistCollection = await playlists();
+
+  user.likedPlaylists = await playlistCollection
+    .find({ spotifyId: { $in: user.likedPlaylists } })
+    .project({ _id: 0, name: 1 })
+    .toArray();
+  user.unlikedPlaylists = await playlistCollection
+    .find({ spotifyId: { $in: user.unlikedPlaylists } })
+    .project({ _id: 0, name: 1 })
+    .toArray();
+
+  return user;
+}
+
 module.exports = {
   addUser,
   getAll,
   isExist,
   addZipcode,
   likePlaylist,
-  unlikePlaylist
+  unlikePlaylist,
+  getUser
 };
