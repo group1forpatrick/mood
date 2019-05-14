@@ -3,8 +3,7 @@ const router = express.Router();
 const xss = require("xss");
 
 router.get("/", async (req, res) => {
-  const chosenPlaylist = req.query.chosenPlaylist;
-  console.log(chosenPlaylist);
+  const playlistIndex = req.query.chosenPlaylist;
 
   try {
     res.render("private/details", {});

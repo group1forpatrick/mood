@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const playlistsData = require("../data/playlists");
 const weatherData = require("../data/weather");
-const userData = require("../data/users");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {

@@ -25,6 +25,10 @@
         .logo {
             margin-top: 2rem;
         }
+
+        button {
+            text-decoration: underline
+        }
     </style>
 </head>
 
@@ -97,7 +101,7 @@
                     <div class="player-controls">
                         <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
                         <form method="GET" action="/details" class="">
-                            <input type="hidden" name="chosenPlaylist" value="{{this.mongoId}}">
+                            <input type="hidden" name="chosenPlaylist" value="{{@index}}">
                             <button type="submit" id="">
                                 Click here if you like this playlist!
                             </button>

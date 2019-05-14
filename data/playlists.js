@@ -54,7 +54,7 @@ async function getPlaylistBySpotifyId(spotify_id) {
     spotifyId: spotify_id
   });
   playlistMongoId = playlistObject._id;
-  //console.log(playlistMongoId);
+  // console.log(playlistMongoId);
   return playlistMongoId;
 }
 
@@ -77,6 +77,8 @@ async function getPlaylists(playlist_id) {
     playlistCover: playlist.body.images[0].url, //640x640 image
     tracks: []
   };
+
+  console.log(list.mongoId);
 
   let counter = 0;
   for (let songs of playlist.body.tracks.items) {
