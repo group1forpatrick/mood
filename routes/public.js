@@ -7,9 +7,11 @@ const xss = require("xss");
 /* Rendering Main Page with Login Form */
 router.get("/", async (req, res) => {
   if (req.session.user) {
-    res.render("private/private", { user: req.session.user });
+    res.render("private/private", {
+      user: req.session.user
+    });
   } else {
-    res.render("public", {});
+    res.render("public", { error: req.session.error });
   }
 });
 
@@ -33,17 +35,26 @@ router.post("/login", async (req, res) => {
       authenticated = await bcrypt.compare(password, users[num].password);
     } catch (e) {
       // failed to compare hassedpassword
-      res.status(400).json({ error: e });
+      req.session.error = { status: 400, message: e };
+      res.status(400).redirect("/"); // TODO: change to redirect to login with error message
+      //res.status(400).json({ error: e });
     }
     if (authenticated === true) {
       req.session.user = users[num];
       res.redirect("/private");
     } else {
       //when password is wrong
-      res.status(401).json("Incorrect Password");
+      req.session.error = {
+        status: 401,
+        message: "Incorrect Username/Password"
+      };
+      res.status(401).redirect("/"); // TODO: change to redirect to login with error message
+      //res.status(401).json("Incorrect Username/Password");
     }
   } catch (e) {
-    res.status(500).json("Failed");
+    req.session.error = { status: 500, message: e };
+    res.status(500).redirect("/");
+    //res.status(500).json("Failed");
   }
 });
 

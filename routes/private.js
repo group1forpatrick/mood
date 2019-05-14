@@ -5,7 +5,8 @@ const xss = require("xss");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
-    return res.status(403).json("ERROR NOT LOGGED IN");
+    req.session.error = { status: 403, message: "Must be logged in." };
+    res.status(403).redirect("/"); // TODO: change to redirect to login with error message
   } else {
     next();
   }

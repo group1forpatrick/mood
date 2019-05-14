@@ -70,6 +70,9 @@
                                     Sign in
                                 </button>
                             </div>
+                            {{#if error}}
+                            <p id="error" class="alert alert-secondary">Error {{error.status}}: {{error.message}}</p>
+                            {{/if}}
 
                             <div class="w-full text-center p-t-27 p-b-239 hidden">
                                 <span class="txt1">
