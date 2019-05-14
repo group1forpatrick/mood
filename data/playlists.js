@@ -63,7 +63,8 @@ async function getPlaylists(playlist_id) {
     name: playlist.body.name,
     weatherTag: playlist.body.description,
     playlistCover: playlist.body.images[0].url, //640x640 image
-    tracks: []
+    tracks: [],
+    comments: []
   };
 
   let counter = 0;

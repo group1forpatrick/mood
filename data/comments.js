@@ -23,7 +23,7 @@ async function createComment(user_id, playlist_id, comment) {
 
   const playlistsCollection = await playlists();
   const playlist = await playlistsCollection.find({
-    user_id: ObjectId(playlist_id)
+    spotifyId: playlist_id
   });
   if (!playlist) throw "Playlist not found";
 
@@ -37,6 +37,14 @@ async function createComment(user_id, playlist_id, comment) {
 
   const insertInfo = await commentsCollection.insertOne(newComment);
   if (insertInfo.insertedCount === 0) throw "Unable to insert comment";
+
+  const updateInfo = await playlistsCollection.updateOne(
+    { spotifyId: playlist_id },
+    { $addToSet: { comments: insertInfo.insertedId } }
+  );
+
+  if (updateInfo.modifiedCount === 0)
+    throw "could not add comment to playlist successfully";
 }
 
 async function getCommentsByUser(user_id) {
@@ -44,11 +52,25 @@ async function getCommentsByUser(user_id) {
   if (typeof user_id !== "string" && !(user_id instanceof ObjectId))
     throw "User_id must be string or ObjectId";
   if (user_id.length === 0) throw "User_id is empty.";
+
+  const userCollection = await users();
+  const user = await userCollection.findOne({
+    user_id: ObjectId(comment.user_id)
+  });
+
+  if (!user) throw "User not found.";
+
   const commentsCollection = await comments();
 
   const commentArray = await commentsCollection
     .find({ user_id: ObjectId(user_id) })
     .toArray();
+
+  for (let comment of commentArray) {
+    const user = await userCollection.findOne({ _id: ObjectId(user_id) });
+    if (!user) throw "User not found";
+    comment.user_id = user.username;
+  }
 
   return commentArray;
 }
@@ -62,8 +84,18 @@ async function getCommentsByPlaylist(playlist_id) {
   const commentsCollection = await comments();
 
   const commentArray = await commentsCollection
-    .find({ playlist_id: ObjectId(playlist_id) })
+    .find({ playlist_id: playlist_id })
+    .project({ _id: 0, playlist_id: 0 })
     .toArray();
+
+  const userCollection = await users();
+  for (let comment of commentArray) {
+    const user = await userCollection.findOne({
+      _id: ObjectId(comment.user_id)
+    });
+    if (!user) throw "User not found";
+    comment.user_id = user.username;
+  }
 
   return commentArray;
 }
