@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Mood | Weather & Playlists</title>
+    <title>Mood | Playlist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="../public/css/fullpage.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -30,7 +30,7 @@
 
 <body>
     <div id="fullpage">
-        <div class="section weathersection">
+        <div class="section fp-auto-height">
             <div class="logo">
                 <div class="icon animate">
                     <span>MOOD</span>
@@ -39,72 +39,6 @@
                 <div class="pipe animate">|</div>
                 <div class="name animate">Weather & Music</div>
             </div>
-            <div class="card">
-                <div class="weather-wrapper">
-                    <span class="login100-form-title p-b-34">
-                        📍{{weather.city}}📍
-                    </span>
-                    <div class="weather_tag">{{weather.weather_tag}}</div>
-                    <div class="weather_des">{{weather.weather_des}}</div>
-                    <ol class="temps">
-                        <li>🌡Max: {{weather.max_temp}}/</li>
-                        <li>Current: {{weather.curr_temp}}/</li>
-                        <li>Min: {{weather.min_temp}}</li>
-                    </ol>
-
-                </div>
-            </div>
-            <div class="arrow bounce"><i class="fa fa-angle-down fa-5x" aria-hidden="true"></i></div>
-        </div>
-        <div class="section">
-            <span class="login100-form-title p-b-34" id="playlist-header">
-                Playlists with <span class="weather-tag-text">#{{weather.weather_tag}}</span> Mood
-            </span>
-            {{!-- wrap up slides with handlebars --}}
-            {{#each playlist}}
-            <div class="slide">
-                <div class="music-player">
-                    <div class="background"></div>
-                    <div class="details">
-                        <div id="left-side">
-                            <span class="coverart">
-                                <img src="{{this.playlistCover}}"></img>
-                            </span>
-                            <div class="album-info">
-                                <p id="playlist-name">🎧 {{this.name}}</p>
-                                <p id="weather-tag"># {{this.weatherTag}}</p>
-                                <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
-                                <p id="click-to-detail"><a href="/details">Click here if you like this playlist!</a></p>
-                            </div>
-                        </div>
-                        <div id="right-side">
-                            <div class="tracklist">
-                                <ol>
-                                    {{#each this.tracks}}
-                                    <li>
-                                        <span class="playing fa fa-play"></span>
-                                        <span class="track-number">{{@index}}</span>
-                                        <span class="track-name">{{this.name}}</span>
-                                        <span
-                                            class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>
-                                    </li>
-                                    {{/each}}
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="player-controls">
-                        {{!-- <div class="buttons">
-                            <button><i class="fa fa-backward"></i></button>
-                            <button><i class="fa fa-play"></i></button>
-                            <button><i class="fa fa-forward"></i></button>
-                            </buttons>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-
         </div>
         <script src="../public/js/fullpage.js"></script>
         <script>

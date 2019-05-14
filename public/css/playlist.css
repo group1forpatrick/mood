@@ -24,9 +24,19 @@
   font-weight: 300;
 }
 
+#playlist-header {
+  position: absolute;
+  padding-top: 80px;
+  font-size: 180%;
+}
+
+.weather-tag-text {
+  text-decoration: underline;
+}
+
 .background {
   position: absolute;
-  background-image: url("../images/playlist.jpg");
+  /* background-image: url("../images/playlist2.jpg"); */
   background-size: 50%;
   width: 99%;
   height: 98%;
@@ -54,11 +64,12 @@
   display: block;
   max-width: 75%;
   margin: auto;
+  padding-top: 30px;
 }
 
 .album-info {
   text-align: center;
-  padding: 0.5em;
+  padding: 1em;
 }
 
 #playlist-name {
@@ -75,6 +86,7 @@
 .tracklist {
   display: inline-block;
   width: 100%;
+  padding-top: 20px;
 }
 
 .tracklist ol {
