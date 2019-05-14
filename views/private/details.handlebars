@@ -53,8 +53,13 @@
                                 {{#each playlist.tracks}}
                                 <li>
                                     <span class="playing fa fa-play"></span>
-                                    <span class="track-number">{{@index}}</span>
-                                    <span class="track-name">{{this.name}}</span>
+                                    <span class="track-number">{{@index}} </span>
+                                    <span class="track-name"> </span>
+                                    <button type="button" class="song-popover" data-container="body"
+                                        data-toggle="popover" data-placement="right" title="Album: {{this.album}}"
+                                        data-content="Artist: {{this.artist}}">
+                                        {{this.name}}
+                                    </button>
                                     <span
                                         class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>
                                 </li>
@@ -119,16 +124,11 @@
     </script>
     <script src="../public/vendor/animsition/js/animsition.min.js"></script>
     <script src="../public/vendor/select2/select2.min.js"></script>
-    <script>
-        $(".selection-2").select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $('#dropDownSelect1')
-        });
-    </script>
     <script src="../public/vendor/daterangepicker/moment.min.js"></script>
     <script src="../public/vendor/daterangepicker/daterangepicker.js"></script>
     <script src="../public/vendor/countdowntime/countdowntime.js"></script>
     <script src="../public/js/login-main.js"></script>
+    <script src="../public/js/mood.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -138,7 +138,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
-    <script src="../public/js/mood.js"></script>
+    <script>
+        $(".selection-2").select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $('#dropDownSelect1')
+        });
+    </script>
+    <script>
+        $(function () {
+            $('.song-popover').popover({
+                container: 'body'
+            })
+        })
+    </script>
 </body>

@@ -66,8 +66,6 @@ async function getPlaylists(playlist_id) {
     tracks: []
   };
 
-  console.log(list.mongoId);
-
   let counter = 0;
   for (let songs of playlist.body.tracks.items) {
     if (counter === MAX_SONGS) break;
