@@ -12,7 +12,7 @@ function LoggedIn(req, res, next) {
   }
 }
 
-router.get("/", async (req, res) => {
+router.get("/", LoggedIn, async (req, res) => {
   try {
     let weData = await weatherData.getWeather(req.session.user.zip);
     let weatherPlaylists = await playlistsData.getPlaylistsByWeather(

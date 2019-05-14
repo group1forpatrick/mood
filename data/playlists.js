@@ -63,10 +63,9 @@ async function getPlaylists(playlist_id) {
     name: playlist.body.name,
     weatherTag: playlist.body.description,
     playlistCover: playlist.body.images[0].url, //640x640 image
-    tracks: []
+    tracks: [],
+    comments: []
   };
-
-  console.log(list.mongoId);
 
   let counter = 0;
   for (let songs of playlist.body.tracks.items) {
