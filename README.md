@@ -21,8 +21,8 @@ Mood is a web app using Spotify API in combination with OpenWeatherMap's API to 
 1. User Authentication
 2. Display Weather using OpenWeatherMap's API
 3. Generate Playlists using Spotify API
-4. Comment
-5. Like/Dislike
+4. Comment on Playlists
+5. Like/Dislike Playlists
 6. User Profile
 7. Share QR code and URL
 
@@ -30,7 +30,7 @@ Mood is a web app using Spotify API in combination with OpenWeatherMap's API to 
 
 - Mijeong Ban
 - Sri Vallabhaneni
-- Mario Alexandre
+- Mario P Alexandre
 - Alexander Lu
 
 ## Contributions
