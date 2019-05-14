@@ -38,6 +38,7 @@
         <div class="section fp-auto-height">
             <span class="login100-form-title p-b-34" id="playlist-header">
                 🎧{{playlist.name}}🎧 with <span class="weather-tag-text">#{{playlist.weatherTag}}</span>
+                <div class="txt2">Click song's titles to see the detail!</div>
             </span>
             {{!-- wrap up slides with handlebars --}}
             <div class="music-player">
@@ -56,8 +57,8 @@
                                     <span class="track-number">{{@index}} </span>
                                     <span class="track-name"> </span>
                                     <button type="button" class="song-popover" data-container="body"
-                                        data-toggle="popover" data-placement="right" title="Album: {{this.album}}"
-                                        data-content="Artist: {{this.artist}}">
+                                        data-toggle="popover" data-placement="right" title="{{this.name}}"
+                                        data-content="<p>Album: {{this.album}}</p> <p>Artist: {{this.artist}}</p> <img src='{{songCover}}' width='200' />">
                                         {{this.name}}
                                     </button>
                                     <span
@@ -148,7 +149,9 @@
     <script>
         $(function () {
             $('.song-popover').popover({
-                container: 'body'
+                container: 'body',
+                html: true,
+
             })
         })
     </script>
