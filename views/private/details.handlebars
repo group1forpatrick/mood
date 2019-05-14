@@ -30,6 +30,14 @@
         .tracklist {
             padding-top: 7rem;
         }
+
+        .mjbutton {
+            width: 8rem;
+            height: 3.5rem;
+            margin-left: 1rem;
+            margin-top: 1rem;
+
+        }
     </style>
 </head>
 
@@ -75,17 +83,21 @@
                     Comment
                 </span>
                 <form method="POST" action="/details" class="commentbox-input">
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type comment">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 comment-input-box"
+                        data-validate="Type comment">
                         <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
                         <input id="comment" class="input100" type="text" name="comment"
                             placeholder="Leave your comment!">
                         <span class="focus-input100"></span>
                     </div>
+                    <button type="submit" class="btn btn-outline-dark mjbutton">Submit</button>
                 </form>
-                <div class="txt3">
-                    <ol>
-                        <li>comment1</li>
-                    </ol>
+                <div class="txt2 comment-list">
+                    <ul class="list-group">
+                        {{#each comments}}
+                        <li class="list-group-item">{{this.user_id}}🗣 {{this.comment}}</li>
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
         </div>

@@ -22,16 +22,17 @@ router.get("/added", async (req, res) => {
   const confirmPassword = xss(req.query.pass2);
 
   // check if password and confirm password match
-  if (
-    !username ||
-    !email ||
-    !firstname ||
-    !lastname ||
-    !password ||
-    confirmPassword
-  ) {
-    res.render("signup", { error: "You need to fill out all fields" });
-  } else if (password !== confirmPassword) {
+  // if (
+  //   !username ||
+  //   !email ||
+  //   !firstname ||
+  //   !lastname ||
+  //   !password ||
+  //   confirmPassword
+  // ) {
+  //   res.render("signup", { error: "You need to fill out all fields" });
+  // } else
+  if (password !== confirmPassword) {
     res.render("signup", { error: "Confirm your password again!" });
   } else {
     if (await users.isExist(username)) {
