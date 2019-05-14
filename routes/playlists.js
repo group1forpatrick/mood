@@ -6,7 +6,7 @@ const userData = require("../data/users");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
-    return res.status(403).json("ERROR");
+    return res.status(403).json("ERROR"); // TODO: change to redirect to login with error message
   } else {
     next();
   }
@@ -14,33 +14,31 @@ function LoggedIn(req, res, next) {
 
 router.get("/", async (req, res) => {
   try {
-    console.log(await weatherData.getWeather(req.session.user.zip));
-    res.render("private/playlists", {});
+    let weData = await weatherData.getWeather(req.session.user.zip);
+    let weatherPlaylists = await playlistsData.getPlaylistsByWeather(
+      weData.weather_tag
+    );
+
+    let removedUnliked = weatherPlaylists.filter(
+      element => !req.session.user.unlikedPlaylists.includes(element.spotifyId)
+    );
+
+    removedUnliked.sort(function(a, b) {
+      let first = req.session.user.likedPlaylists.indexOf(b.spotifyId);
+      let second = req.session.user.likedPlaylists.indexOf(a.spotifyId);
+      return first - second;
+    }); // sorts playlists by liked then remainder in order of Spotify Id (low to high)
+
+    let lists = [];
+    for (let element of removedUnliked)
+      lists.push(await playlistsData.getPlaylists(element.spotifyId));
+
+    res.render("private/playlists", {
+      weather: weData,
+      playlist: lists
+    });
   } catch (e) {
     res.status(500).json({ error: e });
-  }
-});
-
-router.post("/", LoggedIn, async (req, res) => {
-  const userInfo = req.session.user;
-  console.log(userInfo);
-
-  let newAnimal;
-  if (
-    typeof json == "object" &&
-    json.hasOwnProperty("name") &&
-    json.hasOwnProperty("animalType") &&
-    size == 2
-  ) {
-    try {
-      newAnimal = await animalsData.create(json.name, json.animalType);
-    } catch (e) {
-      console.log(e);
-    }
-    newAnimal.posts = [];
-    return res.status(200).json(newAnimal);
-  } else {
-    return res.status(400).send("animal post failed");
   }
 });
 

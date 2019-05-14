@@ -137,6 +137,42 @@
   font-style: italic;
 }
 
+.logo-small {
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #bdc3c7;
+  margin-top: 0%;
+  text-align: center;
+}
+.logo-small .icon {
+  display: inline-block;
+}
+.logo-small .icon span {
+  display: inline-block;
+  vertical-align: middle;
+  font: 400 50px "Poppins-Regular";
+}
+.logo-small .icon span:first-of-type {
+  margin-right: -15px;
+  margin-top: 0px;
+}
+.logo-small .pipe {
+  display: inline-block;
+  vertical-align: middle;
+  font: 100 50px "Poppins-Regular";
+  margin-left: 1rem;
+}
+.logo-small .name {
+  display: inline-block;
+  vertical-align: middle;
+  font: 80 15px "Poppins-Regular";
+}
 .footer {
   font-family: Arial, Helvetica, sans-serif;
   color: #b2bec3;
@@ -151,48 +187,6 @@
 a {
   text-decoration: none;
   color: #b2bec3;
-}
-.container-footer {
-  /* width: 650px;
-  height: 345px; */
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -105px; /* this is half the height of your div*/
-  margin-left: -100px;
-}
-.logo-footer {
-  font-weight: 150;
-  font-family: "Lato", Calibri, Arial, sans-serif;
-  color: #e6e9ed;
-  font-size: 35px;
-  position: relative;
-  margin: 0;
-  padding: 0 auto;
-}
-
-.word-footer {
-  color: #e17055;
-}
-.right-footer,
-.left-footer {
-  font-family: arial;
-  font-size: 70px;
-  position: relative;
-  top: 10px;
-  color: #e17055;
-  margin: 0 0 0 16px;
-}
-
-.text-footer {
-  font-size: 12px;
-  position: absolute;
-  top: 65px;
-  left: 90px;
-}
-.left-footer {
-  margin: 0 25px 0 0;
 }
 
 /* **** New Arrow **** */

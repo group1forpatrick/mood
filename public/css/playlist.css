@@ -2,14 +2,41 @@
   font-family: Poppins-Regular;
   src: url("../fonts/poppins/Poppins-Regular.ttf");
 }
+
+.weather-wrapper {
+  text-align: center;
+}
+.weather_tag {
+  font-size: 200%;
+  color: #2d3436;
+}
+.weather_des {
+  color: gray;
+}
+.temps {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .music-player {
   font-family: "Poppins-Regular";
   font-weight: 300;
 }
 
+#playlist-header {
+  position: absolute;
+  padding-top: 80px;
+  font-size: 180%;
+}
+
+.weather-tag-text {
+  text-decoration: underline;
+}
+
 .background {
   position: absolute;
-  background-image: url("../images/playlist.jpg");
+  /* background-image: url("../images/playlist2.jpg"); */
   background-size: 50%;
   width: 99%;
   height: 98%;
@@ -37,25 +64,29 @@
   display: block;
   max-width: 75%;
   margin: auto;
+  padding-top: 4rem;
 }
 
 .album-info {
   text-align: center;
-  padding: 0.5em;
+  padding: 1em;
 }
 
-#artist-name {
+#playlist-name {
   margin: 0em;
   font-weight: 400;
+  font-size: 200%;
 }
 
-#album-name {
+#weather-tag {
   margin: 0em;
+  font-size: 130%;
 }
 
 .tracklist {
   display: inline-block;
   width: 100%;
+  padding-top: 4rem;
 }
 
 .tracklist ol {
@@ -101,7 +132,8 @@
   bottom: 0px;
   display: inline-block;
   width: 100%;
-  /* height: 8em; */
+  text-align: center;
+  margin-top: 18px;
 }
 
 .buttons {
@@ -125,4 +157,8 @@
 .buttons button i {
   font-size: 1.5em;
   text-align: center;
+}
+
+#click-to-detail {
+  font-size: 110%;
 }

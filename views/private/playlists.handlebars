@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Mood</title>
+    <title>Mood | Weather & Playlists</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="../public/css/fullpage.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,147 +21,95 @@
     <link rel="stylesheet" href="../public/css/mood.css">
     <link rel="stylesheet" href="../public/css/weathercard.css">
     <link rel="stylesheet" href="../public/css/playlist.css">
+    <style>
+        .logo {
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 
 <body>
     <div id="fullpage">
         <div class="section weathersection">
+            <div class="logo">
+                <div class="icon animate">
+                    <span>MOOD</span>
+                    <span> </span>
+                </div>
+                <div class="pipe animate">|</div>
+                <div class="name animate">Weather & Music</div>
+            </div>
             <div class="card">
                 <div class="weather-wrapper">
                     <span class="login100-form-title p-b-34">
-                        Your Current Location
+                        📍{{weather.city}}📍
                     </span>
-                    <div class="w-full text-center">
-                        <a href="#" class="txt3">
-                            {User's address}}
-                        </a>
-                    </div>
-                    <div>weather icon</div>
+                    <div class="weather_tag">{{weather.weather_tag}}</div>
+                    <div class="weather_des">{{weather.weather_des}}</div>
+                    <ol class="temps">
+                        <li>🌡Max: {{weather.max_temp}}/</li>
+                        <li>Current: {{weather.curr_temp}}/</li>
+                        <li>Min: {{weather.min_temp}}</li>
+                    </ol>
+
                 </div>
             </div>
             <div class="arrow bounce"><i class="fa fa-angle-down fa-5x" aria-hidden="true"></i></div>
         </div>
         <div class="section">
+            <span class="login100-form-title p-b-34" id="playlist-header">
+                Playlists with <span class="weather-tag-text">#{{weather.weather_tag}}</span> Mood
+            </span>
             {{!-- wrap up slides with handlebars --}}
+            {{#each playlist}}
             <div class="slide">
                 <div class="music-player">
                     <div class="background"></div>
                     <div class="details">
                         <div id="left-side">
                             <span class="coverart">
-                                <img src=""></img>
+                                <img src="{{this.playlistCover}}"></img>
                             </span>
                             <div class="album-info">
-                                <p id="artist-name">Playlist name</p>
-                                <p id="album-name">description</p>
+                                <p id="playlist-name">🎧 {{this.name}}</p>
+                                <p id="weather-tag"># {{this.weatherTag}}</p>
                             </div>
                         </div>
                         <div id="right-side">
                             <div class="tracklist">
                                 <ol>
+                                    {{#each this.tracks}}
                                     <li>
                                         <span class="playing fa fa-play"></span>
-                                        <span class="track-number">1</span>
-                                        <span class="track-name">Amerika</span>
-                                        <span class="track-duration">4:00</span>
+                                        <span class="track-number">{{@index}}</span>
+                                        <span class="track-name">{{this.name}}</span>
+                                        <span
+                                            class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>
                                     </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">2</span>
-                                        <span class="track-name">Something to Believe In</span>
-                                        <span class="track-duration">3:48</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">3</span>
-                                        <span class="track-name">Elsewhere</span>
-                                        <span class="track-duration">3:44</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">4</span>
-                                        <span class="track-name">Mr. Know-It-All</span>
-                                        <span class="track-duration">3:11</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">5</span>
-                                        <span class="track-name">Jungle Youth</span>
-                                        <span class="track-duration">3:40</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">6</span>
-                                        <span class="track-name">Titus Was Born</span>
-                                        <span class="track-duration">4:02</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">7</span>
-                                        <span class="track-name">Repeat</span>
-                                        <span class="track-duration">3:05</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">8</span>
-                                        <span class="track-name">Silvertongue</span>
-                                        <span class="track-duration">3:17</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">9</span>
-                                        <span class="track-name">Art Exhibit</span>
-                                        <span class="track-duration">4:03</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">10</span>
-                                        <span class="track-name">Nothing's Over</span>
-                                        <span class="track-duration">4:24</span>
-                                    </li>
-                                    <li>
-                                        <span class="not-playing fa fa-play"></span>
-                                        <span class="track-number">11</span>
-                                        <span class="track-name">Home of the Strange</span>
-                                        <span class="track-duration">2:36</span>
-                                    </li>
+                                    {{/each}}
                                 </ol>
                             </div>
                         </div>
                     </div>
                     <div class="player-controls">
-                        <div class="buttons">
-                            <button><i class="fa fa-backward"></i></button>
-                            <button><i class="fa fa-play"></i></button>
-                            <button><i class="fa fa-forward"></i></button>
-                            </buttons>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">Next Section</div>
-            </div>
-
-            <div class="section fp-auto-height">
-                <div class="logo-small">
-
-                </div>
-                <div class="footer">
-                    <div class="container-contact">
-                        <p>📞(917) 291 8448 | 📪mban1@stevens.edu | 📍Stevens Institute of Technology | Made with ❤️
-                            from
-                            SIT </p>
-                    </div>
-                    <div class="container-copyright">
-                        <p>© Mood. All rights reserved. Developed by group1forpatrick</p>
+                        <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
+                        <form method="GET" action="/details" class="">
+                            <input type="hidden" name="chosenPlaylist" value="{{this.name}}">
+                            <button type="submit" id="">
+                                Click here if you like this playlist!
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+            {{/each}}
+
         </div>
         <script src="../public/js/fullpage.js"></script>
         <script>
             new fullpage("#fullpage", {
-                anchors: ["page1", "page2", "page3"],
-                sectionsColor: ["#ecf0f1", "", "#2d3436"],
+                anchors: ["page1", "page2"],
+                sectionsColor: ["#dcdde1", ""],
                 autoScrolling: true,
                 scrollHorizontally: true,
                 controlArrows: true,

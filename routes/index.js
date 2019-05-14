@@ -4,6 +4,7 @@ const playlistRoutes = require("./playlists");
 const profileRoutes = require("./profile");
 const publicRoutes = require("./public");
 const logoutRoutes = require("./logout");
+const detailRoutes = require("./details");
 
 const constructorMethod = app => {
   app.use("/private", privateRoutes);
@@ -11,6 +12,8 @@ const constructorMethod = app => {
   app.use("/signup", signupRoutes);
   app.use("/profile", profileRoutes);
   app.use("/logout", logoutRoutes);
+  app.use("/details", detailRoutes);
+
   app.use("/", publicRoutes);
 
   app.use("*", (req, res) => {
