@@ -1,6 +1,7 @@
 const playlists = require("../config/mongoCollections").playlists;
 var SpotifyWebApi = require("spotify-web-api-node");
 const spotifyConfig = require("../tasks/spotify").spotifyConfig;
+const qrcode = require("qrcode");
 const MAX_SONGS = 15;
 
 async function createPlaylist(name, weatherTag, spotifyId) {
@@ -58,13 +59,16 @@ async function getPlaylists(playlist_id) {
 
   let playlist = await spotifyApi.getPlaylist(playlist_id);
 
+  let qrc = await qrcode.toDataURL(playlist.body.external_urls.spotify);
+
   let list = {
     playlist_id: playlist_id,
     name: playlist.body.name,
     weatherTag: playlist.body.description,
     playlistCover: playlist.body.images[0].url, //640x640 image
     tracks: [],
-    comments: []
+    playlist_url: playlist.body.external_urls.spotify,
+    qrcode: qrc
   };
 
   let counter = 0;
