@@ -73,8 +73,6 @@
                             <div class="album-info">
                                 <p id="playlist-name">🎧 {{this.name}}</p>
                                 <p id="weather-tag"># {{this.weatherTag}}</p>
-                                <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
-                                <p id="click-to-detail"><a href="/details">Click here if you like this playlist!</a></p>
                             </div>
                         </div>
                         <div id="right-side">
@@ -94,12 +92,13 @@
                         </div>
                     </div>
                     <div class="player-controls">
-                        {{!-- <div class="buttons">
-                            <button><i class="fa fa-backward"></i></button>
-                            <button><i class="fa fa-play"></i></button>
-                            <button><i class="fa fa-forward"></i></button>
-                            </buttons>
-                        </div> --}}
+                        <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
+                        <form method="GET" action="/details" class="">
+                            <input type="hidden" name="chosenPlaylist" value="{{this.name}}">
+                            <button type="submit" id="">
+                                Click here if you like this playlist!
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

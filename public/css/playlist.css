@@ -132,7 +132,8 @@
   bottom: 0px;
   display: inline-block;
   width: 100%;
-  /* height: 8em; */
+  text-align: center;
+  margin-top: 18px;
 }
 
 .buttons {
