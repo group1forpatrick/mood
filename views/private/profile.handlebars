@@ -64,13 +64,25 @@
                     <br>
                     <br>
                     <span class="login100-form-title p-b-34">
-                        {{user.firstname}}'s Favorit Playlists
+                        {{user.firstname}}'s Favorite Playlists👍🏻
                     </span>
                     <div class="txt2 comment-list">
                         <ul class="list-group">
-                            {{!-- {{#each comments}} --}}
-                            <li class="list-group-item">🗣 </li>
-                            {{!-- {{/each}} --}}
+                            {{#each user.likedPlaylists}}
+                            <li class="list-group-item">{{this.name}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <span class="login100-form-title p-b-34">
+                        {{user.firstname}}'s Disliked Playlists👎🏻
+                    </span>
+                    <div class="txt2 comment-list">
+                        <ul class="list-group">
+                            {{#each user.unlikedPlaylists}}
+                            <li class="list-group-item">{{this.name}}</li>
+                            {{/each}}
                         </ul>
                     </div>
                 </div>

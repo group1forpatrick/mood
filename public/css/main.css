@@ -13,30 +13,6 @@
   padding: 0 auto;
 }
 
-.word {
-  color: #e17055;
-}
-
-.right,
-.left {
-  font-family: arial;
-  font-size: 180px;
-  position: relative;
-  top: 55px;
-  color: #e17055;
-  margin: 0 0 0 85px;
-}
-
-.text {
-  font-size: 30px;
-  position: absolute;
-  top: 168px;
-  left: 214px;
-}
-.left {
-  margin: 0 40px 0 0;
-}
-
 /* ***** arrow ***** */
 
 [data-ca3_icon]::before {
