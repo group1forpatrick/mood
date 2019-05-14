@@ -77,14 +77,18 @@ async function likePlaylist(user_id, playlistId) {
 
   const userCollection = await users();
 
-  const updateInfo = await userCollection.updateOne(
+  const updateLikeInfo = await userCollection.updateOne(
     { _id: ObjectId(user_id) },
-    { $pull: { unlikedPlaylists: playlistId } },
     { $addToSet: { likedPlaylists: playlistId } }
   );
 
-  if (updateInfo.modifiedCount === 0)
+  if (updateLikeInfo.modifiedCount === 0)
     throw "could not like playlist successfully";
+
+  await userCollection.updateOne(
+    { _id: ObjectId(user_id) },
+    { $pull: { unlikedPlaylists: playlistId } }
+  );
 }
 
 async function unlikePlaylist(user_id, playlistId) {
@@ -97,14 +101,18 @@ async function unlikePlaylist(user_id, playlistId) {
 
   const userCollection = await users();
 
-  const updateInfo = await userCollection.updateOne(
+  const updateUnlikeInfo = await userCollection.updateOne(
     { _id: ObjectId(user_id) },
-    { $pull: { likedPlaylists: playlistId } },
     { $addToSet: { unlikedPlaylists: playlistId } }
   );
 
-  if (updateInfo.modifiedCount === 0)
+  if (updateUnlikeInfo.modifiedCount === 0)
     throw "could not unlike playlist successfully";
+
+  await userCollection.updateOne(
+    { _id: ObjectId(user_id) },
+    { $pull: { likedPlaylists: playlistId } }
+  );
 }
 
 module.exports = {
