@@ -53,7 +53,7 @@ router.get("/added", async (req, res) => {
         res.status(400).render("signup", { error: req.session.error });
         console.log(e);
       }
-      res.redirect("/public");
+      res.redirect("/");
     }
   }
 });
