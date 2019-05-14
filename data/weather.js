@@ -18,7 +18,8 @@ async function getWeather(zip) {
     max_temp: Math.round(parseInt(data.main.temp_max)),
     curr_temp: Math.round(parseInt(data.main.temp)),
     min_temp: Math.round(parseInt(data.main.temp_min)),
-    city: data.name
+    city: data.name,
+    weather_icon: data.weather[0].icon
   };
 }
 
