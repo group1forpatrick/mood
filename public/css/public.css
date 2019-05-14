@@ -269,6 +269,11 @@ iframe {
   display: block;
 }
 
+#error {
+  margin-top: 1rem;
+  margin-left: 4rem;
+}
+
 /*------------------------------------------------------------------
   [ Input ]*/
 
