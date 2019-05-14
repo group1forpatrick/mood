@@ -1,0 +1,10 @@
+.commentbox {
+  margin-top: 50rem;
+}
+.commentbox-title {
+  padding-bottom: 2rem;
+}
+.commentbox-input {
+  display: flex;
+  justify-content: center;
+}

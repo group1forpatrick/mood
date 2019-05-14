@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
   console.log(playlist);
 
   try {
-    res.render("private/details", {});
+    res.render("private/details", { playlist: playlist });
   } catch (e) {
     req.session.error = { status: 500, message: e };
     res.status(500).redirect("/");
