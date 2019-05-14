@@ -21,8 +21,9 @@ router.get("/", LoggedIn, async (req, res) => {
     const comments = await commentData.getCommentsByPlaylist(chosenPlaylist);
     res.render("private/details", { playlist: playlist, comments: comments });
   } catch (e) {
+    let p_id = xss(req.query.chosenPlaylist);
     req.session.error = { status: 500, message: e };
-    res.status(500).redirect("private/details");
+    res.status(500).redirect(`/details?chosenPlaylist=${p_id}`);
   }
 });
 
@@ -33,8 +34,9 @@ router.post("/", LoggedIn, async (req, res) => {
     await commentData.createComment(req.session.user._id, p_id, comment);
     res.redirect(`/details?chosenPlaylist=${p_id}`);
   } catch (e) {
+    let p_id = xss(req.body.playlist_id);
     req.session.error = { status: 500, message: e };
-    res.status(500).redirect("private/details");
+    res.status(500).redirect(`/details?chosenPlaylist=${p_id}`);
   }
 });
 
@@ -44,8 +46,9 @@ router.post("/like", LoggedIn, async (req, res) => {
     await userData.likePlaylist(req.session.user._id, p_id);
     res.redirect(`/details?chosenPlaylist=${p_id}`);
   } catch (e) {
+    let p_id = xss(req.body.playlist_id);
     req.session.error = { status: 500, message: e };
-    res.status(500).redirect("private/details");
+    res.status(500).redirect(`/details?chosenPlaylist=${p_id}`);
   }
 });
 
@@ -55,8 +58,9 @@ router.post("/unlike", LoggedIn, async (req, res) => {
     await userData.unlikePlaylist(req.session.user._id, p_id);
     res.redirect(`/details?chosenPlaylist=${p_id}`);
   } catch (e) {
+    let p_id = xss(req.body.playlist_id);
     req.session.error = { status: 500, message: e };
-    res.status(500).redirect("private/details");
+    res.status(500).redirect(`/details?chosenPlaylist=${p_id}`);
   }
 });
 
