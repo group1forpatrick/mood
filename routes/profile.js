@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    res.render("private/profile", {});
+    res.render("private/profile", {user: req.session.user});
   } catch (e) {
     res.status(500).json({ error: e });
   }
