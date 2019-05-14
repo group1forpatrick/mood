@@ -108,7 +108,18 @@
                     <img src={{playlist.qrcode}}>
                 </div>
                 <div>
-                    like?dislike?
+                    <ul class="list-group">
+                        <li>
+                            <form method="POST" action="/details/like">
+                                <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                                <button type="submit">like</button></form>
+                        </li>
+                        <li>
+                            <form method="POST" action="/details/unlike">
+                                <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                                <button type="submit">dislike</button></form>
+                        </li>
+                    </ul>
                 </div>
             </section>
         </div>
