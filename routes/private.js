@@ -36,7 +36,7 @@ router.put("/", LoggedIn, async (req, res) => {
     res.redirect("/playlists");
   } catch (e) {
     req.session.error = { status: 400, message: "zipcode update fail" };
-    res.status(400).redirect("/");
+    res.status(400).redirect("/private");
   }
 });
 
