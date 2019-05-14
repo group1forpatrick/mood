@@ -11,7 +11,8 @@ router.get("/", async (req, res) => {
   try {
     res.render("private/details", {});
   } catch (e) {
-    res.status(500).json({ error: e });
+    req.session.error = { status: 500, message: e };
+    res.status(500).redirect("/");
   }
 });
 

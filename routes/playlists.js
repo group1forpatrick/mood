@@ -6,7 +6,7 @@ const weatherData = require("../data/weather");
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
     req.session.error = { status: 403, message: "Must be logged in." };
-    res.status(403).redirect("/"); // TODO: change to redirect to login with error message
+    res.status(403).redirect("/");
   } else {
     next();
   }
@@ -37,7 +37,8 @@ router.get("/", async (req, res) => {
       playlist: lists
     });
   } catch (e) {
-    res.status(500).json({ error: e });
+    req.session.error = { status: 500, message: e };
+    res.status(500).redirect("/");
   }
 });
 

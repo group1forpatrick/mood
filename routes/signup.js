@@ -8,7 +8,8 @@ router.get("/", async (req, res) => {
   try {
     res.render("signup", {});
   } catch (e) {
-    res.status(500).json({ error: e });
+    req.session.error = { status: 500, message: e };
+    res.status(500).redirect("/");
   }
 });
 
@@ -38,7 +39,8 @@ router.get("/added", async (req, res) => {
           hashedPassword
         );
       } catch (e) {
-        res.render("signup", { error: e });
+        req.session.error = { status: 400, message: e };
+        res.status(400).render("signup", { error: req.session.error });
         console.log(e);
       }
       res.redirect("/public");

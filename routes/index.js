@@ -17,7 +17,8 @@ const constructorMethod = app => {
   app.use("/", publicRoutes);
 
   app.use("*", (req, res) => {
-    res.redirect("/");
+    req.session.error = { status: 404, message: "Page not found." };
+    res.status(404).redirect("/");
   });
 };
 

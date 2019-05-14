@@ -36,8 +36,7 @@ router.post("/login", async (req, res) => {
     } catch (e) {
       // failed to compare hassedpassword
       req.session.error = { status: 400, message: e };
-      res.status(400).redirect("/"); // TODO: change to redirect to login with error message
-      //res.status(400).json({ error: e });
+      res.status(400).redirect("/");
     }
     if (authenticated === true) {
       req.session.user = users[num];
@@ -48,13 +47,11 @@ router.post("/login", async (req, res) => {
         status: 401,
         message: "Incorrect Username/Password"
       };
-      res.status(401).redirect("/"); // TODO: change to redirect to login with error message
-      //res.status(401).json("Incorrect Username/Password");
+      res.status(401).redirect("/");
     }
   } catch (e) {
     req.session.error = { status: 500, message: e };
     res.status(500).redirect("/");
-    //res.status(500).json("Failed");
   }
 });
 
