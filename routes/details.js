@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const xss = require("xss");
+const playlistData = require("../data/playlists");
 
 router.get("/", async (req, res) => {
-  const playlistIndex = req.query.chosenPlaylist;
+  const chosenPlaylist = xss(req.query.chosenPlaylist);
+  const playlist = await playlistData.getPlaylists(chosenPlaylist);
+  console.log(playlist);
 
   try {
     res.render("private/details", {});
