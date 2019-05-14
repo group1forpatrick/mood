@@ -32,7 +32,6 @@ router.get("/", async (req, res) => {
     let lists = [];
     for (let element of removedUnliked)
       lists.push(await playlistsData.getPlaylists(element.spotifyId));
-
     res.render("private/playlists", {
       weather: weData,
       playlist: lists

@@ -13,6 +13,11 @@
 .weather_des {
   color: gray;
 }
+
+.weather_icon {
+  width: 250px;
+  margin-left: 17rem;
+}
 .temps {
   display: flex;
   flex-direction: row;
