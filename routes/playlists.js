@@ -34,7 +34,8 @@ router.get("/", LoggedIn, async (req, res) => {
       lists.push(await playlistsData.getPlaylists(element.spotifyId));
     res.render("private/playlists", {
       weather: weData,
-      playlist: lists
+      playlist: lists,
+      user: req.session.user
     });
   } catch (e) {
     req.session.error = { status: 500, message: e };
