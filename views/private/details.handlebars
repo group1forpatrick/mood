@@ -55,7 +55,7 @@
                 <div class="details">
                     <div id="left-side">
                         <span class="coverart">
-                            <img src="{{playlist.playlistCover}}"></img>
+                            <img src="{{playlist.playlistCover}}" alt="playlistcover"></img>
                         </span>
                     </div>
                     <div id="right-side">
@@ -68,8 +68,9 @@
                                     <span class="track-name"> </span>
                                     <button type="button" class="song-popover" data-container="body"
                                         data-toggle="popover" data-placement="right" title="{{this.name}}"
-                                        data-content="<p>Album: {{this.album}}</p> <p>Artist: {{this.artist}}</p> <img src='{{songCover}}' width='200' />">
-                                        {{this.name}}
+                                        data-content="<p>Album: {{this.album}}</p> <p>Artist: {{this.artist}}</p> <img src='{{songCover}}' width='200' alt="
+                                        songcover" />">
+                                    {{this.name}}
                                     </button>
                                     <span
                                         class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>
@@ -89,6 +90,7 @@
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 comment-input-box"
                             data-validate="Type comment">
                             <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                            <label for="comment"></label>
                             <input id="comment" class="input100" type="text" name="comment"
                                 placeholder="Leave your comment!">
                             <span class="focus-input100"></span>
@@ -109,7 +111,7 @@
                 <div>
                     <p class="txt3"><a href={{playlist.playlist_url}} style="text-decoration: underline">Share This
                             Playlist</a></p>
-                    <img src={{playlist.qrcode}}>
+                    <img src={{playlist.qrcode}} alt="qrcode">
                 </div>
                 <div>
                     <ul class="list-group">

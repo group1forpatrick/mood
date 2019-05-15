@@ -246,3 +246,7 @@ i {
   -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite;
 }
+
+label {
+  display: none;
+}

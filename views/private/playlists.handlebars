@@ -66,7 +66,8 @@
                 </div>
                 <div>
                     <img class="weather_icon" src="http://openweathermap.org/img/w/{{weather.weather_icon}}.png"
-                        alt="{{weather.weather_tag}}">
+                        alt="weather-icon" />
+
                 </div>
             </div>
             <div class="arrow bounce"><i class="fa fa-angle-down fa-5x" aria-hidden="true"></i></div>
@@ -83,7 +84,7 @@
                     <div class="details">
                         <div id="left-side">
                             <span class="coverart">
-                                <img src="{{this.playlistCover}}"></img>
+                                <img src="{{this.playlistCover}}" alt="coverimage"></img>
                             </span>
                             <div class="album-info">
                                 <p id="playlist-name">🎧 {{this.name}}</p>
@@ -110,7 +111,7 @@
                         <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
                         <form method="GET" action="/details" class="">
                             <input type="hidden" name="chosenPlaylist" value="{{this.playlist_id}}">
-                            <button type="submit" id="">
+                            <button type="submit" name="chosenPlaylist">
                                 Click here if you like this playlist!
                             </button>
                         </form>

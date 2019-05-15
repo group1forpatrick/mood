@@ -21,6 +21,7 @@
   },
   "private": true,
   "dependencies": {
+    "@khanacademy/tota11y": "^0.2.0",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",

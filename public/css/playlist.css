@@ -11,7 +11,7 @@
   color: #2d3436;
 }
 .weather_des {
-  color: gray;
+  color: #767676;
 }
 
 .weather_icon {
@@ -116,7 +116,7 @@
 
 .tracklist li .track-number {
   display: inline-block;
-  color: rgba(0, 0, 0, 0.5);
+  color: #767676;
   width: 1.5em;
   text-align: right;
 }
