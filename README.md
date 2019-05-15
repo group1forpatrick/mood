@@ -2,8 +2,9 @@
 
 ## How to run at localhost
 
-1. `npm run seed` OR `yarn seed`
-2. `npm start` OR `nodemon app.js` OR `yarn start`
+1. `npm install` OR `yarn install`
+2. `npm run seed` OR `yarn seed`
+3. `npm start` OR `nodemon app.js` OR `yarn start`
 
 ## Sample User Information
 
