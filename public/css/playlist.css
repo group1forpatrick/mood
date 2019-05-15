@@ -62,9 +62,6 @@
   width: 50%;
 }
 
-.coverart {
-}
-
 .coverart img {
   display: block;
   max-width: 75%;
@@ -81,11 +78,13 @@
   margin: 0em;
   font-weight: 400;
   font-size: 200%;
+  color: #949494;
 }
 
 #weather-tag {
   margin: 0em;
   font-size: 130%;
+  color: #767676;
 }
 
 .tracklist {

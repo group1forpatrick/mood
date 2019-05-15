@@ -40,6 +40,10 @@
             margin-top: 1rem;
 
         }
+
+        .footer2 {
+            color: #767676;
+        }
     </style>
 </head>
 
@@ -68,9 +72,8 @@
                                     <span class="track-name"> </span>
                                     <button type="button" class="song-popover" data-container="body"
                                         data-toggle="popover" data-placement="right" title="{{this.name}}"
-                                        data-content="<p>Album: {{this.album}}</p> <p>Artist: {{this.artist}}</p> <img src='{{songCover}}' width='200' alt="
-                                        songcover" />">
-                                    {{this.name}}
+                                        data-content="<p>Album: {{this.album}}</p> <p>Artist: {{this.artist}}</p> <img src='{{songCover}}' width='200' />">
+                                        {{this.name}}
                                     </button>
                                     <span
                                         class="track-duration">{{this.duration.minutes}}:{{this.duration.seconds}}</span>
@@ -99,7 +102,6 @@
                     </form>
                     <div class="txt2 comment-list">
                         <ul class="list-group">
-                            <p>Comments:</p>
                             {{#each comments}}
                             <li class="list-group-item">{{this.user_id}}🗣 {{this.comment}}</li>
                             {{/each}}
@@ -109,7 +111,8 @@
             </section>
             <section class="qrcode-like-section">
                 <div>
-                    <p class="txt3"><a href={{playlist.playlist_url}} style="text-decoration: underline">Share This
+                    <p class="txt3"><a href={{playlist.playlist_url}}
+                            style="text-decoration: underline; color: #637a83">Share This
                             Playlist</a></p>
                     <img src={{playlist.qrcode}} alt="qrcode">
                 </div>
@@ -133,12 +136,13 @@
     <div class="section fp-auto-height">
         <div class="footer">
             <div>
-                <p>📞(917) 291 8448 | 📪moodforpatrick@stevens.edu | 📍Stevens Institute of Technology | Made with ❤️
+                <p class="footer2">📞(917) 291 8448 | 📪moodforpatrick@stevens.edu | 📍Stevens Institute of Technology |
+                    Made with ❤️
                     from
                     SIT </p>
             </div>
             <div>
-                <p>© Mood. All rights reserved. Developed by group1forpatrick</p>
+                <p class="footer2">© Mood. All rights reserved. Developed by group1forpatrick</p>
             </div>
         </div>
     </div>

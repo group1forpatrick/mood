@@ -29,6 +29,10 @@
         button {
             text-decoration: underline
         }
+
+        .hands {
+            color: #767676;
+        }
     </style>
 </head>
 
@@ -108,10 +112,10 @@
                         </div>
                     </div>
                     <div class="player-controls">
-                        <p>👇🏻👇🏼👇🏽👇🏾👇🏿</p>
+                        <p class="hands">👇🏻👇🏼👇🏽👇🏾👇🏿</p>
                         <form method="GET" action="/details" class="">
                             <input type="hidden" name="chosenPlaylist" value="{{this.playlist_id}}">
-                            <button type="submit" name="chosenPlaylist">
+                            <button type="submit">
                                 Click here if you like this playlist!
                             </button>
                         </form>
