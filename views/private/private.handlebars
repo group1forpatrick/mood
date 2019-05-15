@@ -62,7 +62,7 @@
                         </div>
                         <form method="POST" action="/private" class="login100-form validate-form">
                             {{#if error}}
-                            <p id="error" class="alert alert-danger">Error: {{error}}</p>
+                            <p id="error" class="alert alert-danger">Error {{error.status}}: {{error.message}}</p>
                             {{/if}}
                             <span class="login100-form-title p-b-34">
                                 Enter Your Zipcode!

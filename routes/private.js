@@ -15,9 +15,12 @@ function LoggedIn(req, res, next) {
 
 router.get("/", LoggedIn, async (req, res) => {
   try {
-    res.render("private/private", { user: req.session.user });
+    res.render("private/private", {
+      user: req.session.user,
+      error: req.session.error
+    });
   } catch (e) {
-    res.render("/", { error: e });
+    res.render("private/private", { error: e });
   }
 });
 

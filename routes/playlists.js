@@ -15,6 +15,13 @@ function LoggedIn(req, res, next) {
 router.get("/", LoggedIn, async (req, res) => {
   try {
     let weData = await weatherData.getWeather(req.session.user.zip);
+
+    if (weData.code) {
+      req.session.error = { status: weData.code, message: weData.message };
+      res.redirect("/private");
+      return;
+    }
+
     let weatherPlaylists = await playlistsData.getPlaylistsByWeather(
       weData.weather_tag
     );
