@@ -4,6 +4,8 @@ const xss = require("xss");
 const playlistData = require("../data/playlists");
 const commentData = require("../data/comments");
 const userData = require("../data/users");
+const users = require("../config/mongoCollections").users;
+const { ObjectId } = require("mongodb");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
@@ -44,6 +46,10 @@ router.post("/like", LoggedIn, async (req, res) => {
   try {
     let p_id = xss(req.body.playlist_id);
     await userData.likePlaylist(req.session.user._id, p_id);
+    const userCollection = await users();
+    req.session.user = await userCollection.findOne({
+      _id: ObjectId(req.session.user._id)
+    });
     res.redirect(`/details?chosenPlaylist=${p_id}`);
   } catch (e) {
     let p_id = xss(req.body.playlist_id);
@@ -56,6 +62,10 @@ router.post("/unlike", LoggedIn, async (req, res) => {
   try {
     let p_id = xss(req.body.playlist_id);
     await userData.unlikePlaylist(req.session.user._id, p_id);
+    const userCollection = await users();
+    req.session.user = await userCollection.findOne({
+      _id: ObjectId(req.session.user._id)
+    });
     res.redirect(`/details?chosenPlaylist=${p_id}`);
   } catch (e) {
     let p_id = xss(req.body.playlist_id);

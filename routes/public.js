@@ -40,6 +40,7 @@ router.post("/login", async (req, res) => {
     }
     if (authenticated === true) {
       req.session.user = users[num];
+      delete req.session.error;
       res.redirect("/private");
     } else {
       //when password is wrong
