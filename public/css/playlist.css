@@ -52,12 +52,12 @@
   padding: 2em;
 }
 
-.details #left-side {
+.details .left-side {
   float: left;
   width: 50%;
 }
 
-.details #right-side {
+.details .right-side {
   float: right;
   width: 50%;
 }
@@ -74,14 +74,14 @@
   padding: 1em;
 }
 
-#playlist-name {
+.playlist-name {
   margin: 0em;
   font-weight: 400;
   font-size: 200%;
   color: #949494;
 }
 
-#weather-tag {
+.weather-tag {
   margin: 0em;
   font-size: 130%;
   color: #767676;

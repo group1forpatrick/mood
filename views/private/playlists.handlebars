@@ -86,16 +86,16 @@
                 <div class="music-player">
                     <div class="background"></div>
                     <div class="details">
-                        <div id="left-side">
+                        <div class="left-side">
                             <span class="coverart">
-                                <img src="{{this.playlistCover}}" alt="coverimage"></img>
+                                <img src="{{this.playlistCover}}" alt="coverimage" />
                             </span>
                             <div class="album-info">
-                                <p id="playlist-name">🎧 {{this.name}}</p>
-                                <p id="weather-tag"># {{this.weatherTag}}</p>
+                                <p class="playlist-name">🎧 {{this.name}}</p>
+                                <p class="weather-tag"># {{this.weatherTag}}</p>
                             </div>
                         </div>
-                        <div id="right-side">
+                        <div class="right-side">
                             <div class="tracklist">
                                 <ol>
                                     {{#each this.tracks}}
@@ -165,4 +165,5 @@
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
         <script src="../public/js/mood.js"></script>
+    </div>
 </body>

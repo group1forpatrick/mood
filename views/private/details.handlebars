@@ -50,16 +50,16 @@
 <body>
     <div id="fullpage">
         <div class="section fp-auto-height">
-            <span class="login100-form-title p-b-34" id="playlist-header">
+            <div class="login100-form-title p-b-34" id="playlist-header">
                 🎧{{playlist.name}}🎧 with <span class="weather-tag-text">#{{playlist.weatherTag}}</span>
                 <div class="txt2">⚠️Click song's titles to see the detail!⚠️</div>
-            </span>
+            </div>
             {{!-- wrap up slides with handlebars --}}
             <div class="music-player">
                 <div class="details">
                     <div id="left-side">
                         <span class="coverart">
-                            <img src="{{playlist.playlistCover}}" alt="playlistcover"></img>
+                            <img src="{{playlist.playlistCover}}" alt="playlistcover" />
                         </span>
                     </div>
                     <div id="right-side">
@@ -92,7 +92,7 @@
                     <form method="POST" action="/details" class="commentbox-input">
                         <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 comment-input-box"
                             data-validate="Type comment">
-                            <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                            <input class="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
                             <label for="comment"></label>
                             <input id="comment" class="input100" type="text" name="comment"
                                 placeholder="Leave your comment!">
@@ -114,18 +114,20 @@
                     <p class="txt3"><a href={{playlist.playlist_url}}
                             style="text-decoration: underline; color: #637a83">Share This
                             Playlist</a></p>
-                    <img src={{playlist.qrcode}} alt="qrcode">
+                    <img src={{playlist.qrcode}} alt="qrcode" />
                 </div>
                 <div>
                     <ul class="list-group">
                         <li>
                             <form method="POST" action="/details/like">
-                                <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                                <input class="playlist_id" name="playlist_id" type="hidden"
+                                    value={{playlist.playlist_id}}>
                                 <button type="submit">Like <i class="fas fa-heart"></i></button></form>
                         </li>
                         <li>
                             <form method="POST" action="/details/unlike">
-                                <input id="playlist_id" name="playlist_id" type="hidden" value={{playlist.playlist_id}}>
+                                <input class="playlist_id" name="playlist_id" type="hidden"
+                                    value={{playlist.playlist_id}}>
                                 <button type="submit">dislike <i class="far fa-heart"></i></button></form>
                         </li>
                     </ul>
