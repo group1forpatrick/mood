@@ -5,9 +5,8 @@ const xss = require("xss");
 
 function LoggedIn(req, res, next) {
   if (!req.session.user) {
-    res.render("private/private", { error: "Must be logged in." });
-    // req.session.error = { status: 403, message: "Must be logged in." };
-    // res.status(403).redirect("/");
+    req.session.error = { status: 403, message: "Must be logged in." };
+    res.status(403).redirect("/");
   } else {
     next();
   }
