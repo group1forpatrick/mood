@@ -54,15 +54,16 @@
                 🎧{{playlist.name}}🎧 with <span class="weather-tag-text">#{{playlist.weatherTag}}</span>
                 <div class="txt2">⚠️Click song's titles to see the detail!⚠️</div>
             </div>
+
             {{!-- wrap up slides with handlebars --}}
             <div class="music-player">
                 <div class="details">
-                    <div id="left-side">
+                    <div class="left-side">
                         <span class="coverart">
                             <img src="{{playlist.playlistCover}}" alt="playlistcover" />
                         </span>
                     </div>
-                    <div id="right-side">
+                    <div class="right-side">
                         <div class="tracklist">
                             <ol>
                                 {{#each playlist.tracks}}
