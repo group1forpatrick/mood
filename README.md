@@ -51,3 +51,5 @@ Mood is a web app using Spotify API in combination with OpenWeatherMap's API to 
 - [Login Form 17 by Colorlib](https://colorlib.com/etc/lf/Login_v17/index.html)
 - [fullPage by alvarotrigo](https://github.com/alvarotrigo/fullPage.js)
 - [Music Player by Shaun Hey](https://codepen.io/shaunhey/pen/zNyZPy)
+- [Spotify Web API Node by Michael Thelin](https://github.com/thelinmichael/spotify-web-api-node)
+- [OpenWeatherMap API](https://openweathermap.org/api)
